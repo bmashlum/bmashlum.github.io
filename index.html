@@ -147,7 +147,7 @@ footer{text-align:center;padding:48px 24px 64px;border-top:1px solid var(--borde
 </div>
 
 <section class="narrative">
-  <p class="narrative-text">I'm an engineer who became a product leader because I couldn't stop building. At Cricket/AT&T, I introduced AI to my department before a formal program existed &mdash; prioritizing use cases across legal, marketing, and operations, building multi-model orchestration from scratch, and training teams to think AI-first. Outside of work, I build trading systems, data platforms, autonomous dev tools, and anything else that scratches the itch. These are not tutorials I followed. These are problems I needed to solve.</p>
+  <p class="narrative-text">I'm an engineer who became a product leader because I couldn't stop building. By day, I lead technical product management &mdash; shipping platforms, integrations, and AI-enabled products. By night, I build trading systems, data platforms, AI orchestration engines, and autonomous dev tools. These are not tutorials I followed. These are problems I needed to solve.</p>
 </section>
 
 <!-- CORTEX HERO -->
@@ -157,9 +157,9 @@ footer{text-align:center;padding:48px 24px 64px;border-top:1px solid var(--borde
     <div class="hero-project-content">
       <div class="hero-project-info">
         <h2 class="hero-project-title">Cortex</h2>
-        <p class="hero-project-desc">A full AI agent orchestration platform built from zero. Visual studio for designing, testing, and deploying multi-step AI flows at enterprise scale.</p>
+        <p class="hero-project-desc">A full AI agent orchestration platform built from zero. Visual DAG-based flow builder for designing, testing, and deploying multi-step AI agent workflows at enterprise scale.</p>
         <div class="hero-project-arch">
-          <strong>Architecture:</strong> Spring Boot backend on Java 21 using Spring AI's ChatClient with advisor chains and tool-calling patterns, persisted to MongoDB Atlas on Azure. Domain gateway routes to AskATT or OpenAI model providers. NBA workspace supports 190K-monthly-volume load simulation with p50/p95/p99 latency reporting. React frontend with Monaco editor for visual flow authoring and real-time execution monitoring.
+          <strong>Architecture:</strong> Spring Boot backend on Java 21 using Spring AI's ChatClient with advisor chains and tool-calling patterns, persisted to MongoDB Atlas on Azure. Agents are composed as directed acyclic graphs (DAGs) where each node represents a flow step &mdash; signal collection, AI reasoning, guardrails, or actions &mdash; with configurable routing between nodes. Domain gateway routes to configurable model providers (OpenAI, Azure OpenAI, or custom endpoints). NBA workspace supports 190K-monthly-volume load simulation with p50/p95/p99 latency reporting and circuit-breaker tuning. React frontend with Monaco editor, visual DAG canvas for flow authoring, real-time execution tracing, and a seed-bundle system for bootstrapping entire workspaces.
         </div>
         <div class="tech-pills" style="margin-top:8px">
           <span class="tech-pill">Java 21</span><span class="tech-pill">Spring AI</span><span class="tech-pill">MongoDB Atlas</span><span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Monaco Editor</span><span class="tech-pill">Docker</span><span class="tech-pill">Oracle</span><span class="tech-pill">OpenAI API</span>
@@ -212,7 +212,7 @@ const projects = [
     image:"images/say-it-right.png",
     oneliner:"AI-powered legal compliance review agent for outbound marketing messages.",
     highlight:"Hybrid review pipeline combining deterministic legal checks with LLM-powered rewrites.",
-    architecture:"A Java 21 Spring Boot backend performs hybrid compliance review combining deterministic legal rule checks with LLM-powered rewrites via an AskATT/OpenAI-compatible adapter, storing review history and templates in MongoDB. A React + Vite frontend delivers a review workbench with Material UI, offering real-time draft scoring, rewrite suggestions, and a legal handoff queue.",
+    architecture:"A Java 21 Spring Boot backend performs hybrid compliance review combining deterministic legal rule checks with LLM-powered rewrites via an OpenAI-compatible adapter, storing review history and templates in MongoDB. A React + Vite frontend delivers a review workbench with Material UI, offering real-time draft scoring, rewrite suggestions, and a legal handoff queue.",
     features:[
       "Hybrid review engine combining deterministic legal rule matching with LLM-powered rewrite suggestions for SMS, MMS, and email drafts",
       "Legal handoff queue with export packages and full audit trail for compliance sign-off workflows",
