@@ -9,525 +9,121 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
-:root {
-  --bg: #08080a;
-  --bg-elevated: #111114;
-  --bg-card: #16161a;
-  --border: rgba(255,255,255,0.06);
-  --border-hover: rgba(255,255,255,0.12);
-  --text-primary: #ededef;
-  --text-secondary: #8a8a8e;
-  --text-tertiary: #5a5a5e;
-  --ai-from: #6366f1;
-  --ai-to: #a855f7;
-  --data-from: #06b6d4;
-  --data-to: #10b981;
-  --trade-from: #f59e0b;
-  --trade-to: #ef4444;
-  --tools-from: #ec4899;
-  --tools-to: #f43f5e;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --font-body: 'DM Sans', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+:root{
+  --bg:#08080a;--bg-elevated:#111114;--bg-card:#16161a;
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --text-primary:#ededef;--text-secondary:#8a8a8e;--text-tertiary:#5a5a5e;
+  --ai-from:#6366f1;--ai-to:#a855f7;
+  --data-from:#06b6d4;--data-to:#10b981;
+  --trade-from:#f59e0b;--trade-to:#ef4444;
+  --tools-from:#ec4899;--tools-to:#f43f5e;
+  --font-display:'Instrument Serif',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
 }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text-primary);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+.hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
 
-html { scroll-behavior: smooth; }
+header{position:relative;text-align:center;padding:100px 24px 60px;overflow:hidden}
+.header-rule{width:60px;height:1px;background:linear-gradient(90deg,var(--ai-from),var(--ai-to));border:none;margin:0 auto 32px;opacity:0;animation:fadeUp .6s ease forwards .2s}
+h1{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);font-weight:400;letter-spacing:-.02em;line-height:1.05;opacity:0;animation:fadeUp .8s ease forwards .3s}
+.subtitle{font-family:var(--font-mono);font-size:clamp(.7rem,1.4vw,.85rem);color:var(--text-tertiary);letter-spacing:.15em;text-transform:uppercase;margin-top:16px;opacity:0;animation:fadeUp .8s ease forwards .5s}
+.contact-row{display:flex;justify-content:center;gap:28px;margin-top:28px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards .65s}
+.contact-row a{color:var(--text-secondary);text-decoration:none;font-size:.85rem;transition:color .2s;display:flex;align-items:center;gap:6px}
+.contact-row a:hover{color:var(--text-primary)}
+.contact-row svg{width:14px;height:14px;opacity:.5}
 
-body {
-  background: var(--bg);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
+.stats-bar{display:flex;justify-content:center;gap:48px;padding:32px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 auto;max-width:700px;opacity:0;animation:fadeUp .8s ease forwards .8s}
+.stat{text-align:center}
+.stat-number{font-family:var(--font-display);font-size:2.2rem;font-style:italic}
+.stat-label{font-size:.72rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.12em;margin-top:2px}
 
-/* Grain overlay */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-}
+.narrative{max-width:740px;margin:0 auto;padding:56px 24px 0;opacity:0;animation:fadeUp .8s ease forwards 1.1s}
+.narrative-text{font-size:1.05rem;color:var(--text-secondary);line-height:1.75;text-align:center;font-weight:300}
 
-/* Subtle radial glow behind header */
-.hero-glow {
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 600px;
-  background: radial-gradient(ellipse at center, rgba(99,102,241,0.08) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
+.hero-project{max-width:1200px;margin:56px auto 0;padding:0 24px;opacity:0;animation:fadeUp .8s ease forwards 1.3s}
+.hero-project-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden}
+.hero-project-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ai-from),var(--ai-to))}
+.hero-project-label{font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:#a78bfa;margin-bottom:20px}
+.hero-project-content{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;align-items:start}
+.hero-project-title{font-family:var(--font-display);font-size:2.2rem;letter-spacing:-.02em;margin-bottom:12px}
+.hero-project-desc{font-size:.88rem;color:var(--text-secondary);line-height:1.65;margin-bottom:12px}
+.hero-project-arch{font-size:.8rem;color:var(--text-tertiary);line-height:1.6;padding:12px;background:rgba(255,255,255,.02);border-left:2px solid var(--ai-from);border-radius:0 6px 6px 0;margin-bottom:16px}
+.hero-project-screenshots{display:flex;flex-direction:column;gap:8px}
+.hero-screenshot{border-radius:8px;border:1px solid var(--border);overflow:hidden}
+.hero-screenshot.main{width:100%;height:auto;object-fit:cover}
+.hero-screenshot-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero-screenshot.secondary{width:100%;height:120px;object-fit:cover;opacity:.8;transition:opacity .3s}
+.hero-screenshot.secondary:hover{opacity:1}
 
-/* ========== HEADER ========== */
-header {
-  position: relative;
-  text-align: center;
-  padding: 100px 24px 60px;
-  overflow: hidden;
-}
+.filter-section{text-align:center;padding:52px 24px 20px;opacity:0;animation:fadeUp .8s ease forwards 1.5s}
+.filter-tabs{display:inline-flex;gap:4px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:10px;padding:4px}
+.filter-tab{font-family:var(--font-body);font-size:.8rem;font-weight:500;padding:8px 18px;border:none;border-radius:7px;background:transparent;color:var(--text-secondary);cursor:pointer;transition:all .25s;white-space:nowrap}
+.filter-tab:hover{color:var(--text-primary);background:rgba(255,255,255,.04)}
+.filter-tab.active{color:var(--text-primary);background:rgba(255,255,255,.08)}
 
-.header-rule {
-  width: 60px;
-  height: 1px;
-  background: linear-gradient(90deg, var(--ai-from), var(--ai-to));
-  border: none;
-  margin: 0 auto 32px;
-  opacity: 0;
-  animation: fadeSlideUp 0.6s ease forwards 0.2s;
-}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:32px auto 0;padding:0 24px 100px}
 
-h1 {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
-  color: var(--text-primary);
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 0.3s;
-}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s;cursor:pointer;opacity:0;transform:translateY(24px)}
+.project-card.visible{opacity:1;transform:translateY(0);transition:opacity .6s,transform .6s,border-color .35s,box-shadow .35s}
+.project-card:hover{transform:translateY(-4px)}
+.project-card[data-category="ai"]:hover{box-shadow:0 8px 40px rgba(99,102,241,.1),0 0 0 1px rgba(99,102,241,.15)}
+.project-card[data-category="data"]:hover{box-shadow:0 8px 40px rgba(6,182,212,.1),0 0 0 1px rgba(6,182,212,.15)}
+.project-card[data-category="trading"]:hover{box-shadow:0 8px 40px rgba(245,158,11,.1),0 0 0 1px rgba(245,158,11,.15)}
+.project-card[data-category="tools"]:hover{box-shadow:0 8px 40px rgba(236,72,153,.1),0 0 0 1px rgba(236,72,153,.15)}
+.project-card.hidden{display:none}
 
-.subtitle {
-  font-family: var(--font-mono);
-  font-size: clamp(0.7rem, 1.4vw, 0.85rem);
-  color: var(--text-tertiary);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-top: 16px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 0.5s;
-}
+.card-visual{height:160px;position:relative;overflow:hidden}
+.card-visual img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s,transform .5s cubic-bezier(.22,1,.36,1)}
+.project-card:hover .card-visual img{opacity:1;transform:scale(1.03)}
+.card-gradient{width:100%;height:100%;position:relative}
+.card-gradient.ai{background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(168,85,247,.15))}
+.card-gradient.tools{background:linear-gradient(135deg,rgba(236,72,153,.2),rgba(244,63,94,.15))}
+.card-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.8rem;opacity:.25}
+.card-category{position:absolute;top:12px;left:12px;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:5px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08)}
+.card-category.ai{color:#a78bfa}.card-category.data{color:#5eead4}.card-category.trading{color:#fbbf24}.card-category.tools{color:#f472b6}
+.card-body{padding:20px}
+.card-title{font-family:var(--font-display);font-size:1.4rem;margin-bottom:6px}
+.card-description{font-size:.82rem;color:var(--text-secondary);line-height:1.5;margin-bottom:14px}
+.tech-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.tech-pill{font-family:var(--font-mono);font-size:.62rem;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-secondary);letter-spacing:.02em}
+.card-highlight{font-size:.75rem;color:var(--text-tertiary);padding:10px 12px;background:rgba(255,255,255,.02);border-left:2px solid;border-radius:0 6px 6px 0;line-height:1.45;font-style:italic}
+.card-highlight.ai{border-color:var(--ai-from)}.card-highlight.data{border-color:var(--data-from)}.card-highlight.trading{border-color:var(--trade-from)}.card-highlight.tools{border-color:var(--tools-from)}
+.card-expand-hint{font-size:.68rem;color:var(--text-tertiary);margin-top:12px;text-align:right;opacity:.5}
 
-.contact-row {
-  display: flex;
-  justify-content: center;
-  gap: 28px;
-  margin-top: 28px;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 0.65s;
-}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .3s}
+.modal-overlay.open{display:flex;opacity:1}
+.modal{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;max-width:900px;width:100%;max-height:85vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform .3s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:all .2s;z-index:2}
+.modal-close:hover{background:rgba(255,255,255,.12);color:var(--text-primary)}
+.modal-image{width:100%;height:240px;object-fit:cover;border-radius:16px 16px 0 0}
+.modal-gradient-header{width:100%;height:120px;border-radius:16px 16px 0 0}
+.modal-body{padding:32px}
+.modal-title{font-family:var(--font-display);font-size:2rem;margin-bottom:4px}
+.modal-category-badge{font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;display:inline-block}
+.modal-section-label{font-family:var(--font-mono);font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-tertiary);margin:24px 0 8px}
+.modal-architecture{font-size:.88rem;color:var(--text-secondary);line-height:1.7;padding:14px 16px;background:rgba(255,255,255,.02);border-left:2px solid;border-radius:0 6px 6px 0}
+.modal-features{list-style:none;padding:0}
+.modal-features li{font-size:.85rem;color:var(--text-secondary);line-height:1.55;padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px}
+.modal-features li::before{content:'>';font-family:var(--font-mono);color:var(--text-tertiary);flex-shrink:0;margin-top:1px}
+.modal-features li:last-child{border:none}
+.modal-tech-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.modal-screenshots{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.modal-screenshots img{width:100%;height:140px;object-fit:cover;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:opacity .2s}
+.modal-screenshots img:hover{opacity:.8}
 
-.contact-row a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+footer{text-align:center;padding:48px 24px 64px;border-top:1px solid var(--border)}
+.footer-text{font-family:var(--font-display);font-style:italic;font-size:1.15rem;color:var(--text-tertiary)}
+.footer-sub{font-size:.72rem;color:var(--text-tertiary);margin-top:12px;opacity:.5}
 
-.contact-row a:hover { color: var(--text-primary); }
-
-.contact-row svg {
-  width: 14px;
-  height: 14px;
-  opacity: 0.5;
-}
-
-/* ========== STATS BAR ========== */
-.stats-bar {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  padding: 32px 24px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  margin: 0 auto;
-  max-width: 700px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 0.8s;
-}
-
-.stat {
-  text-align: center;
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  font-style: italic;
-  color: var(--text-primary);
-}
-
-.stat-label {
-  font-size: 0.72rem;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-top: 2px;
-}
-
-/* ========== FILTER TABS ========== */
-.filter-section {
-  text-align: center;
-  padding: 52px 24px 20px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 0.95s;
-}
-
-.filter-tabs {
-  display: inline-flex;
-  gap: 4px;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 4px;
-}
-
-.filter-tab {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 8px 18px;
-  border: none;
-  border-radius: 7px;
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-.filter-tab:hover {
-  color: var(--text-primary);
-  background: rgba(255,255,255,0.04);
-}
-
-.filter-tab.active {
-  color: var(--text-primary);
-  background: rgba(255,255,255,0.08);
-}
-
-/* ========== GRID ========== */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 32px auto 0;
-  padding: 0 24px 100px;
-}
-
-@media (max-width: 960px) {
-  .projects-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px) {
-  .projects-grid { grid-template-columns: 1fr; }
-  .stats-bar { gap: 28px; }
-  .filter-tabs { flex-wrap: wrap; justify-content: center; }
-}
-
-/* ========== PROJECT CARD ========== */
-.project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), border-color 0.35s ease, box-shadow 0.35s ease;
-  cursor: default;
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.project-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-hover);
-}
-
-.project-card[data-category="ai"]:hover {
-  box-shadow: 0 8px 40px rgba(99,102,241,0.1), 0 0 0 1px rgba(99,102,241,0.15);
-}
-.project-card[data-category="data"]:hover {
-  box-shadow: 0 8px 40px rgba(6,182,212,0.1), 0 0 0 1px rgba(6,182,212,0.15);
-}
-.project-card[data-category="trading"]:hover {
-  box-shadow: 0 8px 40px rgba(245,158,11,0.1), 0 0 0 1px rgba(245,158,11,0.15);
-}
-.project-card[data-category="tools"]:hover {
-  box-shadow: 0 8px 40px rgba(236,72,153,0.1), 0 0 0 1px rgba(236,72,153,0.15);
-}
-
-.project-card.hidden {
-  display: none;
-}
-
-/* Card visual header */
-.card-visual {
-  height: 160px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.85;
-  transition: opacity 0.3s, transform 0.5s cubic-bezier(0.22,1,0.36,1);
-}
-
-.project-card:hover .card-visual img {
-  opacity: 1;
-  transform: scale(1.03);
-}
-
-.card-gradient {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.card-gradient.ai { background: linear-gradient(135deg, rgba(99,102,241,0.2) 0%, rgba(168,85,247,0.15) 100%); }
-.card-gradient.data { background: linear-gradient(135deg, rgba(6,182,212,0.2) 0%, rgba(16,185,129,0.15) 100%); }
-.card-gradient.trading { background: linear-gradient(135deg, rgba(245,158,11,0.2) 0%, rgba(239,68,68,0.15) 100%); }
-.card-gradient.tools { background: linear-gradient(135deg, rgba(236,72,153,0.2) 0%, rgba(244,63,94,0.15) 100%); }
-
-.card-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 2.8rem;
-  opacity: 0.25;
-  filter: grayscale(0.3);
-}
-
-/* Category badge */
-.card-category {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 5px;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.card-category.ai { color: #a78bfa; }
-.card-category.data { color: #5eead4; }
-.card-category.trading { color: #fbbf24; }
-.card-category.tools { color: #f472b6; }
-
-/* Card body */
-.card-body {
-  padding: 20px;
-}
-
-.card-title {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
-}
-
-.card-description {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-
-/* Tech pills */
-.tech-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 14px;
-}
-
-.tech-pill {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
-}
-
-/* Highlight callout */
-.card-highlight {
-  font-size: 0.75rem;
-  color: var(--text-tertiary);
-  padding: 10px 12px;
-  background: rgba(255,255,255,0.02);
-  border-left: 2px solid;
-  border-radius: 0 6px 6px 0;
-  line-height: 1.45;
-  font-style: italic;
-}
-
-.card-highlight.ai { border-color: var(--ai-from); }
-.card-highlight.data { border-color: var(--data-from); }
-.card-highlight.trading { border-color: var(--trade-from); }
-.card-highlight.tools { border-color: var(--tools-from); }
-
-/* ========== FOOTER ========== */
-footer {
-  text-align: center;
-  padding: 48px 24px 64px;
-  border-top: 1px solid var(--border);
-}
-
-.footer-text {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.15rem;
-  color: var(--text-tertiary);
-}
-
-.footer-sub {
-  font-size: 0.72rem;
-  color: var(--text-tertiary);
-  margin-top: 12px;
-  opacity: 0.5;
-}
-
-/* ========== NARRATIVE ========== */
-.narrative {
-  max-width: 740px;
-  margin: 0 auto;
-  padding: 56px 24px 0;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 1.1s;
-}
-
-.narrative-text {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  line-height: 1.75;
-  text-align: center;
-  font-weight: 300;
-}
-
-/* ========== HERO PROJECT ========== */
-.hero-project {
-  max-width: 1200px;
-  margin: 56px auto 0;
-  padding: 0 24px;
-  opacity: 0;
-  animation: fadeSlideUp 0.8s ease forwards 1.3s;
-}
-
-.hero-project-inner {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-project-inner::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--ai-from), var(--ai-to));
-}
-
-.hero-project-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #a78bfa;
-  margin-bottom: 20px;
-}
-
-.hero-project-content {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 32px;
-  align-items: start;
-}
-
-@media (max-width: 768px) {
-  .hero-project-content { grid-template-columns: 1fr; }
-}
-
-.hero-project-title {
-  font-family: var(--font-display);
-  font-size: 2.2rem;
-  letter-spacing: -0.02em;
-  margin-bottom: 12px;
-}
-
-.hero-project-desc {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
-}
-
-.hero-project-screenshots {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.hero-screenshot {
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  overflow: hidden;
-}
-
-.hero-screenshot.main {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.hero-screenshot-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.hero-screenshot.secondary {
-  width: 100%;
-  height: 120px;
-  object-fit: cover;
-  opacity: 0.8;
-  transition: opacity 0.3s;
-}
-
-.hero-screenshot.secondary:hover {
-  opacity: 1;
-}
-
-/* ========== ANIMATIONS ========== */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:960px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.hero-project-content{grid-template-columns:1fr}.modal-screenshots{grid-template-columns:1fr}}
+@media(max-width:600px){.projects-grid{grid-template-columns:1fr}.stats-bar{gap:28px}.filter-tabs{flex-wrap:wrap;justify-content:center}}
 </style>
 </head>
 <body>
@@ -538,59 +134,35 @@ footer {
   <h1>Bradford Mashlum</h1>
   <p class="subtitle">Technical Product Manager &middot; AI, Platforms &amp; Integrations</p>
   <div class="contact-row">
-    <a href="https://linkedin.com/in/brad-mashlum" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      LinkedIn
-    </a>
-    <a href="mailto:bmashlum@gmail.com">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      bmashlum@gmail.com
-    </a>
-    <a href="tel:6784447250">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-      678-444-7250
-    </a>
+    <a href="https://linkedin.com/in/brad-mashlum" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+    <a href="mailto:bmashlum@gmail.com"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>bmashlum@gmail.com</a>
+    <a href="tel:6784447250"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>678-444-7250</a>
   </div>
 </header>
 
 <div class="stats-bar">
-  <div class="stat">
-    <div class="stat-number">12</div>
-    <div class="stat-label">Projects</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">4</div>
-    <div class="stat-label">Domains</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">20+</div>
-    <div class="stat-label">Technologies</div>
-  </div>
+  <div class="stat"><div class="stat-number">12</div><div class="stat-label">Projects</div></div>
+  <div class="stat"><div class="stat-number">4</div><div class="stat-label">Domains</div></div>
+  <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Technologies</div></div>
 </div>
 
-<!-- ===== NARRATIVE ===== -->
 <section class="narrative">
-  <div class="narrative-inner">
-    <p class="narrative-text">I'm an engineer who became a product leader because I couldn't stop building. At Cricket/AT&T, I introduced AI to an organization that didn't have it yet &mdash; prioritizing use cases across legal, marketing, and operations, building multi-model orchestration from scratch, and training teams to think AI-first. Outside of work, I build trading systems, data platforms, autonomous dev tools, and anything else that scratches the itch. These are not tutorials I followed. These are problems I needed to solve.</p>
-  </div>
+  <p class="narrative-text">I'm an engineer who became a product leader because I couldn't stop building. At Cricket/AT&T, I introduced AI to my department before a formal program existed &mdash; prioritizing use cases across legal, marketing, and operations, building multi-model orchestration from scratch, and training teams to think AI-first. Outside of work, I build trading systems, data platforms, autonomous dev tools, and anything else that scratches the itch. These are not tutorials I followed. These are problems I needed to solve.</p>
 </section>
 
-<!-- ===== CORTEX HERO ===== -->
+<!-- CORTEX HERO -->
 <section class="hero-project">
   <div class="hero-project-inner">
     <div class="hero-project-label">Featured Project</div>
     <div class="hero-project-content">
       <div class="hero-project-info">
         <h2 class="hero-project-title">Cortex</h2>
-        <p class="hero-project-desc">A full AI agent orchestration platform built from zero. Visual studio for designing multi-step AI flows, real-time execution monitoring, and a Spring AI backend load-tested for 190,000 monthly customer interactions. Includes workspace management, agent identity configuration, safety guardrails, and a React-based visual flow builder.</p>
-        <div class="tech-pills" style="margin-top:16px">
-          <span class="tech-pill">Java 21</span>
-          <span class="tech-pill">Spring AI</span>
-          <span class="tech-pill">MongoDB Atlas</span>
-          <span class="tech-pill">React</span>
-          <span class="tech-pill">TypeScript</span>
-          <span class="tech-pill">Docker</span>
-          <span class="tech-pill">Maven</span>
+        <p class="hero-project-desc">A full AI agent orchestration platform built from zero. Visual studio for designing, testing, and deploying multi-step AI flows at enterprise scale.</p>
+        <div class="hero-project-arch">
+          <strong>Architecture:</strong> Spring Boot backend on Java 21 using Spring AI's ChatClient with advisor chains and tool-calling patterns, persisted to MongoDB Atlas on Azure. Domain gateway routes to AskATT or OpenAI model providers. NBA workspace supports 190K-monthly-volume load simulation with p50/p95/p99 latency reporting. React frontend with Monaco editor for visual flow authoring and real-time execution monitoring.
+        </div>
+        <div class="tech-pills" style="margin-top:8px">
+          <span class="tech-pill">Java 21</span><span class="tech-pill">Spring AI</span><span class="tech-pill">MongoDB Atlas</span><span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Monaco Editor</span><span class="tech-pill">Docker</span><span class="tech-pill">Oracle</span><span class="tech-pill">OpenAI API</span>
         </div>
       </div>
       <div class="hero-project-screenshots">
@@ -618,231 +190,14 @@ footer {
   </div>
 </section>
 
-<div class="projects-grid" id="grid">
+<div class="projects-grid" id="grid"></div>
 
-  <!-- ===== AI/ML (Cortex is in hero section above) ===== -->
-  <div class="project-card" data-category="ai">
-    <div class="card-visual">
-      <img src="images/say-it-right.png" alt="Say It Right">
-      <span class="card-category ai">AI / ML</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Say It Right</div>
-      <div class="card-description">AI-powered legal compliance review agent for outbound marketing messages. Deterministic rule checks combined with LLM-powered rewrites and full audit trails.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Java 21</span>
-        <span class="tech-pill">Spring Boot 3.5</span>
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">MUI</span>
-        <span class="tech-pill">MongoDB</span>
-        <span class="tech-pill">OpenAI API</span>
-      </div>
-      <div class="card-highlight ai">Hybrid review pipeline combining deterministic legal checks with LLM-powered rewrites.</div>
-    </div>
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalContent"></div>
   </div>
-
-  <div class="project-card" data-category="ai">
-    <div class="card-visual">
-      <div class="card-gradient ai"><span class="card-icon">&#9881;</span></div>
-      <span class="card-category ai">AI / ML</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Retention OS</div>
-      <div class="card-description">ML-powered customer churn prediction and retention analytics platform with XGBoost models, SHAP explainability, and Polars-accelerated data processing.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">FastAPI</span>
-        <span class="tech-pill">XGBoost</span>
-        <span class="tech-pill">SHAP</span>
-        <span class="tech-pill">Polars</span>
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">Cassandra</span>
-      </div>
-      <div class="card-highlight ai">End-to-end ML pipeline with XGBoost churn models and SHAP explainability.</div>
-    </div>
-  </div>
-
-  <!-- ===== DATA ENGINEERING ===== -->
-  <div class="project-card" data-category="data">
-    <div class="card-visual">
-      <img src="images/guardian-dashboard.png" alt="Integrity Guardian">
-      <span class="card-category data">Data Engineering</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Integrity Guardian</div>
-      <div class="card-description">Real-time MongoDB data integrity monitor with auto-remediation playbooks. YAML-defined rules, Socket.IO alerts, and one-click auto-fix with diff views.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Next.js 14</span>
-        <span class="tech-pill">TypeScript</span>
-        <span class="tech-pill">Express</span>
-        <span class="tech-pill">MongoDB</span>
-        <span class="tech-pill">Socket.IO</span>
-        <span class="tech-pill">D3.js</span>
-      </div>
-      <div class="card-highlight data">YAML-defined integrity rules with real-time Socket.IO alerts and one-click auto-remediation.</div>
-    </div>
-  </div>
-
-  <div class="project-card" data-category="data">
-    <div class="card-visual">
-      <img src="images/data-loader.png" alt="Data Loader Utility">
-      <span class="card-category data">Data Engineering</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Data Loader Utility</div>
-      <div class="card-description">Visual drag-and-drop ETL tool for Cassandra-to-MongoDB data migration with automatic schema detection, type transformation, and crash recovery.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Java 17</span>
-        <span class="tech-pill">Spring Boot 3</span>
-        <span class="tech-pill">React Flow</span>
-        <span class="tech-pill">Cassandra</span>
-        <span class="tech-pill">MongoDB</span>
-        <span class="tech-pill">WebSocket</span>
-      </div>
-      <div class="card-highlight data">Streaming architecture with checkpoint-based crash recovery and zero intermediate storage.</div>
-    </div>
-  </div>
-
-  <div class="project-card" data-category="data">
-    <div class="card-visual">
-      <div class="card-gradient data"><span class="card-icon">&#9776;</span></div>
-      <span class="card-category data">Data Engineering</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Insights</div>
-      <div class="card-description">Embeddable analytics web component with multi-database query engine. Drop into any host app to surface interactive dashboards from multiple data sources.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">Express</span>
-        <span class="tech-pill">Web Components</span>
-        <span class="tech-pill">Oracle</span>
-        <span class="tech-pill">PostgreSQL</span>
-        <span class="tech-pill">MongoDB</span>
-      </div>
-      <div class="card-highlight data">Embeddable web component surfacing analytics from Oracle, PostgreSQL, and MongoDB in any host app.</div>
-    </div>
-  </div>
-
-  <!-- ===== TRADING SYSTEMS ===== -->
-  <div class="project-card" data-category="trading">
-    <div class="card-visual">
-      <img src="images/epoch-dashboard.png" alt="Epoch Trading Bot">
-      <span class="card-category trading">Trading Systems</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Epoch</div>
-      <div class="card-description">Event-driven crypto auto-trading bot with trailing stops on Coinbase Advanced. Async event bus, momentum signals, and crash-safe SQLite persistence.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">FastAPI</span>
-        <span class="tech-pill">WebSocket</span>
-        <span class="tech-pill">SQLite</span>
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">Coinbase API</span>
-      </div>
-      <div class="card-highlight trading">Full live-to-backtest parity: same event loop drives backtester and live Coinbase execution.</div>
-    </div>
-  </div>
-
-  <div class="project-card" data-category="trading">
-    <div class="card-visual">
-      <img src="images/trading-signals.png" alt="Trading Signals Dashboard">
-      <span class="card-category trading">Trading Systems</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Trading Signals</div>
-      <div class="card-description">Real-time NVDA momentum signals with backtesting laboratory, Kelly-optimal position sizing, and AI-powered news sentiment analysis.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Next.js 14</span>
-        <span class="tech-pill">TypeScript</span>
-        <span class="tech-pill">Tailwind CSS</span>
-        <span class="tech-pill">Chart.js</span>
-        <span class="tech-pill">Alpha Vantage</span>
-      </div>
-      <div class="card-highlight trading">7-factor weighted signal engine with 5-second live polling and AI news sentiment.</div>
-    </div>
-  </div>
-
-  <div class="project-card" data-category="trading">
-    <div class="card-visual">
-      <img src="images/smc-swingtrader.png" alt="SMC SwingTrader">
-      <span class="card-category trading">Trading Systems</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">SMC SwingTrader</div>
-      <div class="card-description">ICT/Smart Money Concept swing trading workstation with background scanner, trade journal, analytics dashboard, and risk management guardrails.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Next.js 14</span>
-        <span class="tech-pill">TypeScript</span>
-        <span class="tech-pill">SQLite</span>
-        <span class="tech-pill">Zustand</span>
-        <span class="tech-pill">Recharts</span>
-        <span class="tech-pill">Radix UI</span>
-      </div>
-      <div class="card-highlight trading">Background scanner detecting SMC market structure shifts across multiple timeframes.</div>
-    </div>
-  </div>
-
-  <!-- ===== DEVELOPER TOOLS ===== -->
-  <div class="project-card" data-category="tools">
-    <div class="card-visual">
-      <img src="images/flow-doc-dashboard.png" alt="Flow Doc Generator">
-      <span class="card-category tools">Developer Tools</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">Flow Doc Generator</div>
-      <div class="card-description">Chrome extension that records web app user flows and generates AI-powered training documentation with full E2E test coverage via Playwright.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">TypeScript</span>
-        <span class="tech-pill">Chrome Extension</span>
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">Playwright</span>
-        <span class="tech-pill">Webpack</span>
-      </div>
-      <div class="card-highlight tools">Browser extension captures real user interactions and auto-generates training documentation.</div>
-    </div>
-  </div>
-
-  <div class="project-card" data-category="tools">
-    <div class="card-visual">
-      <img src="images/simflow.png" alt="SimFlow">
-      <span class="card-category tools">Developer Tools</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">SimFlow</div>
-      <div class="card-description">Visual API simulation and mock server with scenario management. Build and orchestrate mock endpoints without backend dependencies.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">TypeScript</span>
-        <span class="tech-pill">React</span>
-        <span class="tech-pill">MUI</span>
-        <span class="tech-pill">Express</span>
-        <span class="tech-pill">Node.js</span>
-        <span class="tech-pill">Vite</span>
-      </div>
-      <div class="card-highlight tools">Visual drag-and-drop mock server builder that eliminates backend dependencies.</div>
-    </div>
-  </div>
-
-  <div class="project-card" data-category="tools">
-    <div class="card-visual">
-      <div class="card-gradient tools"><span class="card-icon">&#9883;</span></div>
-      <span class="card-category tools">Developer Tools</span>
-    </div>
-    <div class="card-body">
-      <div class="card-title">TARS</div>
-      <div class="card-description">Slack-controlled autonomous dev assistant that passively scans codebases, builds improvement backlogs, and implements approved fixes via Claude Code.</div>
-      <div class="tech-pills">
-        <span class="tech-pill">Electron</span>
-        <span class="tech-pill">React 19</span>
-        <span class="tech-pill">Python</span>
-        <span class="tech-pill">SQLite</span>
-        <span class="tech-pill">Slack API</span>
-        <span class="tech-pill">Claude CLI</span>
-      </div>
-      <div class="card-highlight tools">Autonomous implementation engine that clones repos and iteratively builds+tests via Claude Code.</div>
-    </div>
-  </div>
-
 </div>
 
 <footer>
@@ -851,18 +206,246 @@ footer {
 </footer>
 
 <script>
-// Filter tabs
+const projects = [
+  {
+    id:"say-it-right",name:"Say It Right",category:"ai",categoryLabel:"AI / ML",
+    image:"images/say-it-right.png",
+    oneliner:"AI-powered legal compliance review agent for outbound marketing messages.",
+    highlight:"Hybrid review pipeline combining deterministic legal checks with LLM-powered rewrites.",
+    architecture:"A Java 21 Spring Boot backend performs hybrid compliance review combining deterministic legal rule checks with LLM-powered rewrites via an AskATT/OpenAI-compatible adapter, storing review history and templates in MongoDB. A React + Vite frontend delivers a review workbench with Material UI, offering real-time draft scoring, rewrite suggestions, and a legal handoff queue.",
+    features:[
+      "Hybrid review engine combining deterministic legal rule matching with LLM-powered rewrite suggestions for SMS, MMS, and email drafts",
+      "Legal handoff queue with export packages and full audit trail for compliance sign-off workflows",
+      "Persona Insights dashboard visualizing trust tiers, source mix, phrase fingerprints, tone signals, and risk markers",
+      "Admin-controlled import pipeline for templates, legal guidelines, and persona research corpus data"
+    ],
+    tech:["Java 21","Spring Boot 3.5","React","Vite","MUI","MongoDB","OpenAI API","React Query"]
+  },
+  {
+    id:"retention-os",name:"Retention OS",category:"ai",categoryLabel:"AI / ML",
+    image:"images/retention-os.png",
+    oneliner:"ML-powered customer churn prediction and retention analytics platform.",
+    highlight:"End-to-end ML pipeline with XGBoost churn models and SHAP explainability.",
+    architecture:"A Python FastAPI backend serves ML-powered churn prediction models built with XGBoost and scikit-learn, using Polars and PyArrow for high-performance feature engineering from Cassandra data sources. The React + Vite frontend visualizes retention analytics through Recharts dashboards. An orchestration layer supports Airflow pipelines, MLflow model tracking, and Redis feature stores.",
+    features:[
+      "XGBoost and scikit-learn churn prediction pipeline with SHAP explainability for per-customer risk scoring",
+      "Polars-based vectorized feature engineering with PyArrow for columnar data processing from Cassandra sources",
+      "MLflow model tracking with Airflow orchestration and Redis feature store integration for production ML workflows",
+      "Retention analytics dashboard with account-level drill-down, cohort analysis, and real-time churn risk visualization"
+    ],
+    tech:["Python","FastAPI","XGBoost","SHAP","Polars","PyArrow","Cassandra","MLflow","Airflow","Redis","React","TypeScript","Recharts","Zustand"]
+  },
+  {
+    id:"guardian",name:"Integrity Guardian",category:"data",categoryLabel:"Data Engineering",
+    image:"images/guardian-dashboard.png",
+    oneliner:"Real-time MongoDB data integrity monitor with auto-remediation playbooks.",
+    highlight:"YAML-defined integrity rules with real-time Socket.IO alerts and one-click auto-remediation.",
+    architecture:"A Node.js Express backend runs a GuardianEngine that executes YAML-defined integrity rules (orphan, aging, raw query) against monitored MongoDB clusters, with Socket.IO pushing real-time violation alerts to the frontend. A Next.js 14 frontend provides a mission dashboard, alerts inbox, and Monaco-powered rule editor.",
+    features:[
+      "Three-mode integrity rule engine supporting orphan detection, aging/staleness checks, and custom raw MongoDB query invariants",
+      "Real-time violation alerts via Socket.IO with auto-fix suggestions, diff views, and configurable auto-remediation playbooks",
+      "Monaco-powered YAML rule editor with MongoDB schema introspection for authoring business logic invariants",
+      "Multi-cluster monitoring with latency tracking, replication lag detection, and cluster topology visualization"
+    ],
+    tech:["Next.js 14","TypeScript","Express","MongoDB","Socket.IO","D3.js","shadcn/ui","Tailwind CSS","Monaco Editor","Turborepo"]
+  },
+  {
+    id:"data-loader",name:"Data Loader",category:"data",categoryLabel:"Data Engineering",
+    image:"images/data-loader.png",
+    oneliner:"Visual drag-and-drop ETL tool for Cassandra-to-MongoDB data migration.",
+    highlight:"Streaming architecture with checkpoint-based crash recovery and zero intermediate storage.",
+    architecture:"A Spring Boot backend streams data directly between Cassandra and MongoDB using pluggable reader/writer strategy patterns, with a transformation pipeline handling type conversion, nested document flattening, and checkpoint-based recovery. The React frontend uses React Flow for visual drag-and-drop field mapping with real-time WebSocket progress monitoring.",
+    features:[
+      "Visual drag-and-drop field mapping interface built on React Flow with automatic schema discovery for both Cassandra and MongoDB",
+      "Streaming data transfer with checkpoint-based recovery, circuit breaker protection, and configurable retry policies",
+      "Pluggable type transformation engine handling Cassandra UDTs, nested documents, and configurable nesting depth",
+      "Real-time job progress monitoring via WebSocket STOMP with batch-level tracking and failure-point resume"
+    ],
+    tech:["Java 17","Spring Boot 3","React 18","React Flow","Redux Toolkit","MUI","Cassandra","MongoDB","WebSocket","H2","Docker","TestContainers"]
+  },
+  {
+    id:"insights",name:"Insights",category:"data",categoryLabel:"Data Engineering",
+    image:"images/insights.png",
+    oneliner:"Embeddable analytics platform with NL-to-Query audience builder.",
+    highlight:"Natural language audience builder: type a question, get a query across Oracle, PostgreSQL, and MongoDB.",
+    architecture:"An Express API server queries Oracle, PostgreSQL, and MongoDB data sources across bronze/silver/gold tiers, with an NL-to-SQL pipeline powered by OpenAI that lets users build audiences and run analytics using natural language. A shared React UI package is wrapped in a custom web component for embeddable deployment into any host application.",
+    features:[
+      "Natural language-to-query audience builder: type a question like 'show me users who churned last month' and get a working query across Oracle, PostgreSQL, or MongoDB",
+      "Embeddable web component wrapper around a shared React UI for drop-in analytics in any host application",
+      "Medallion data architecture (bronze/silver/gold) with Oracle-to-Postgres ETL loaders and MongoDB analytics aggregation",
+      "Multi-database analytics backend with entitlement-based data access control and fixture-based NL accuracy evaluation"
+    ],
+    tech:["React","Express","Web Components","Oracle","PostgreSQL","MongoDB","OpenAI API","TypeScript","pnpm workspaces","Jest"]
+  },
+  {
+    id:"epoch",name:"Epoch",category:"trading",categoryLabel:"Trading Systems",
+    image:"images/epoch-dashboard.png",
+    oneliner:"Event-driven crypto auto-trading bot with trailing stops on Coinbase.",
+    highlight:"Full live-to-backtest parity: same event loop drives backtester and live Coinbase execution.",
+    architecture:"An event-driven Python trading engine uses an async event bus to decouple market data, signal generation, risk management, and order execution into independent components. The Coinbase Advanced REST/WebSocket OMS handles live order lifecycle with trailing stop/take-profit ratcheting, while SQLite persists state for crash-safe restarts. A React dashboard connects via WebSocket for real-time monitoring.",
+    features:[
+      "Trailing stop and take-profit controller with configurable hysteresis, partial profit ladders, and daily kill-switch",
+      "Deterministic backtester replaying 1-minute CSV bars through the same event loop with simulated fills and partial exits",
+      "Live Coinbase Advanced OMS with REST/WebSocket order management and exchange fill synchronization",
+      "Fixed-fractional risk sizing with venue notionals, daily drawdown kill switch, and real-time equity ledger"
+    ],
+    tech:["Python","AsyncIO","FastAPI","Coinbase API","WebSocket","SQLite","React","Vite","Slack Webhooks","Telegram Bot"]
+  },
+  {
+    id:"trading-signals",name:"Trading Signals",category:"trading",categoryLabel:"Trading Systems",
+    image:"images/trading-signals.png",
+    oneliner:"Real-time NVDA momentum signals with backtesting and Kelly-optimal sizing.",
+    highlight:"7-factor weighted signal engine with 5-second live polling and AI news sentiment.",
+    architecture:"A Next.js 14 application fetches real-time NVDA market data from Alpha Vantage, computing technical indicators (RSI, EMA, MACD, ATR, VWAP) and synthesizing them through a weighted 7-factor scoring system to produce momentum signals. Includes AI-powered news sentiment analysis and market regime detection.",
+    features:[
+      "Seven-dimension weighted momentum scoring: moving averages, RSI, dual MACD, volume, price trend, news sentiment, VWAP",
+      "Five NVDA-optimized stop-loss strategies including adaptive volatility regime detection and earnings-adjusted stops",
+      "Kelly Criterion position sizing with earnings proximity adjustment and dynamic market condition scaling",
+      "Integrated backtesting laboratory with Sharpe ratio analysis, drawdown metrics, and equity curve visualization"
+    ],
+    tech:["Next.js 14","TypeScript","Tailwind CSS","Framer Motion","Chart.js","Alpha Vantage API"]
+  },
+  {
+    id:"smc",name:"SMC SwingTrader",category:"trading",categoryLabel:"Trading Systems",
+    image:"images/smc-swingtrader.png",
+    oneliner:"ICT/Smart Money Concept swing trading workstation with live scanner.",
+    highlight:"Background scanner detecting SMC market structure shifts across multiple timeframes.",
+    architecture:"A Next.js 14 application with a separate scanner worker that detects ICT/SMC-style setups (liquidity sweeps, market structure shifts, fair value gaps) across daily, 4H, and 15-minute timeframes. SQLite provides local persistence for trade journal and settings. Pure detection algorithms are isolated from I/O for deterministic testing.",
+    features:[
+      "Multi-timeframe ICT/SMC scanner detecting liquidity sweeps, market structure shifts, and fair value gaps",
+      "Strict discipline engine enforcing 1-2% max risk, 3:1 minimum R:R, position limits, and stop-widening warnings",
+      "Dedicated scanner worker with provider-agnostic data abstraction, quota management, and 4H candle derivation",
+      "Trade journal with lifecycle tracking, performance analytics, equity curve monitoring, and time-stop flagging"
+    ],
+    tech:["Next.js 14","TypeScript","Tailwind CSS","SQLite","Zustand","Recharts","Radix UI","Framer Motion","Vitest"]
+  },
+  {
+    id:"flow-doc",name:"Flow Doc Generator",category:"tools",categoryLabel:"Developer Tools",
+    image:"images/flow-doc-dashboard.png",
+    oneliner:"Chrome extension that records user flows and generates AI training docs.",
+    highlight:"Browser extension captures real user interactions and auto-generates training documentation.",
+    architecture:"A Chrome Manifest V3 extension records user interaction flows via content scripts and tab capture, sending sessions to an Express backend that uses OpenAI and Puppeteer to generate AI-narrated training docs with automated screenshots. A React portal with Tiptap editor enables reviewing and publishing. Remotion handles video rendering.",
+    features:[
+      "Chrome extension with content scripts and tab capture for recording complete user interaction flows across any web app",
+      "AI-powered document narration and step annotation using OpenAI with intent accuracy evaluation benchmarks",
+      "Tiptap rich text editor with tables, task lists, code blocks, and image support for document review and publishing",
+      "Automated video generation via Remotion and PDF rendering via Puppeteer with Sharp image processing"
+    ],
+    tech:["Chrome Extension V3","TypeScript","React","Webpack","Express","OpenAI API","Puppeteer","Remotion","Sharp","Tiptap","Playwright","Vitest"],
+    extraImages:["images/flow-doc-analytics.png","images/flow-doc-templates.png","images/flow-doc-review-queue.png"]
+  },
+  {
+    id:"simflow",name:"SimFlow",category:"tools",categoryLabel:"Developer Tools",
+    image:"images/simflow.png",
+    oneliner:"Visual API simulation and mock server with scenario management.",
+    highlight:"Visual drag-and-drop mock server builder that eliminates backend dependencies.",
+    architecture:"An Express/TypeScript backend with Mongoose provides a configurable API simulation server where users define services, endpoints, response rules, and scenarios. A React client with Material UI and CodeMirror provides a management interface for configuring mock endpoints and editing JSON response bodies.",
+    features:[
+      "Configurable endpoint simulation with dynamic response rules, latency injection, and scenario-based behavior switching",
+      "Service-level mock management with independent endpoint trees and request log tracking",
+      "CodeMirror-powered JSON response editor with real-time validation for complex mock payloads",
+      "Scenario orchestration for simulating multi-step API workflows with sequenced responses"
+    ],
+    tech:["TypeScript","Express","Mongoose","MongoDB","React","Vite","MUI","CodeMirror","Zustand","Vitest"]
+  },
+  {
+    id:"tars",name:"TARS",category:"tools",categoryLabel:"Developer Tools",
+    image:null,
+    oneliner:"Slack-controlled autonomous dev assistant that scans and fixes codebases.",
+    highlight:"Autonomous implementation engine that clones repos and iteratively builds+tests via Claude Code.",
+    architecture:"An Electron desktop app communicates via IPC with a Python daemon that autonomously scans git repositories using Claude CLI, builds a prioritized backlog of improvements, and implements approved items through parallel checkout branches. A shared SQLite database with WAL enables concurrent access. Slack integration provides remote approval workflows.",
+    features:[
+      "Autonomous codebase scanning using Claude CLI that discovers and prioritizes improvement opportunities into a ranked backlog",
+      "Ralph Wiggum implementation technique with iterative code generation, test verification loops, and automatic branch management",
+      "Slack-controlled workflow with slash commands for scanning and emoji reactions for approving or dismissing items",
+      "Parallel checkout architecture supporting multiple concurrent implementations, each isolated in its own git clone"
+    ],
+    tech:["Electron","React 19","TypeScript","Python","SQLite (WAL)","Claude CLI","Slack Bot SDK","Tailwind CSS","Vite","Vitest","Pytest"]
+  }
+];
+
+const categoryColors = {ai:"var(--ai-from)",data:"var(--data-from)",trading:"var(--trade-from)",tools:"var(--tools-from)"};
+const categoryIcons = {ai:"\u2699",tools:"\u2699"};
+
+// Render cards
+const grid = document.getElementById('grid');
+projects.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'project-card';
+  card.dataset.category = p.category;
+  card.dataset.projectId = p.id;
+
+  const visualHTML = p.image
+    ? `<img src="${p.image}" alt="${p.name}">`
+    : `<div class="card-gradient ${p.category}"><span class="card-icon">${categoryIcons[p.category]||'\u2699'}</span></div>`;
+
+  card.innerHTML = `
+    <div class="card-visual">
+      ${visualHTML}
+      <span class="card-category ${p.category}">${p.categoryLabel}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">${p.name}</div>
+      <div class="card-description">${p.oneliner}</div>
+      <div class="tech-pills">${p.tech.slice(0,6).map(t=>`<span class="tech-pill">${t}</span>`).join('')}</div>
+      <div class="card-highlight ${p.category}">${p.highlight}</div>
+      <div class="card-expand-hint">Click to explore &rarr;</div>
+    </div>`;
+
+  card.addEventListener('click', () => openModal(p));
+  grid.appendChild(card);
+});
+
+// Modal
+const overlay = document.getElementById('modalOverlay');
+const modal = document.getElementById('modal');
+const modalContent = document.getElementById('modalContent');
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+function openModal(p) {
+  const imageHTML = p.image
+    ? `<img class="modal-image" src="${p.image}" alt="${p.name}">`
+    : `<div class="modal-gradient-header card-gradient ${p.category}"></div>`;
+
+  const extraScreenshots = p.extraImages
+    ? `<div class="modal-section-label">More Screenshots</div><div class="modal-screenshots">${p.extraImages.map(img=>`<img src="${img}" alt="${p.name}">`).join('')}</div>`
+    : '';
+
+  modalContent.innerHTML = `
+    ${imageHTML}
+    <div class="modal-body">
+      <div class="modal-category-badge" style="color:${categoryColors[p.category]}">${p.categoryLabel}</div>
+      <div class="modal-title">${p.name}</div>
+      <div class="modal-section-label">Architecture</div>
+      <div class="modal-architecture" style="border-color:${categoryColors[p.category]}">${p.architecture}</div>
+      <div class="modal-section-label">Key Features</div>
+      <ul class="modal-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>
+      <div class="modal-section-label">Tech Stack</div>
+      <div class="modal-tech-grid">${p.tech.map(t=>`<span class="tech-pill">${t}</span>`).join('')}</div>
+      ${extraScreenshots}
+    </div>`;
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Filters
 document.querySelectorAll('.filter-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const filter = tab.dataset.filter;
+    const f = tab.dataset.filter;
     document.querySelectorAll('.project-card').forEach(card => {
-      if (filter === 'all' || card.dataset.category === filter) {
+      if(f==='all' || card.dataset.category===f) {
         card.classList.remove('hidden');
-        requestAnimationFrame(() => {
-          card.classList.add('visible');
-        });
+        requestAnimationFrame(() => card.classList.add('visible'));
       } else {
         card.classList.add('hidden');
         card.classList.remove('visible');
@@ -871,23 +454,18 @@ document.querySelectorAll('.filter-tab').forEach(tab => {
   });
 });
 
-// Staggered reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      const card = entry.target;
-      const siblings = [...document.querySelectorAll('.project-card:not(.hidden)')];
-      const idx = siblings.indexOf(card);
-      setTimeout(() => {
-        card.classList.add('visible');
-      }, idx * 80);
-      observer.unobserve(card);
+// Staggered scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      const cards = [...document.querySelectorAll('.project-card:not(.hidden)')];
+      const idx = cards.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 80);
+      obs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.project-card').forEach(card => observer.observe(card));
+}, {threshold:0.1});
+document.querySelectorAll('.project-card').forEach(c => obs.observe(c));
 </script>
-
 </body>
 </html>
