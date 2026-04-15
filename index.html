@@ -157,12 +157,12 @@ footer{text-align:center;padding:48px 24px 64px;border-top:1px solid var(--borde
     <div class="hero-project-content">
       <div class="hero-project-info">
         <h2 class="hero-project-title">Cortex</h2>
-        <p class="hero-project-desc">A full AI agent orchestration platform built from zero. Visual DAG-based flow builder for designing, testing, and deploying multi-step AI agent workflows at enterprise scale.</p>
+        <p class="hero-project-desc">A full AI agent orchestration platform built from zero. Visual DAG-based flow builder for designing, testing, and deploying multi-step AI agent workflows at enterprise scale. Includes a conversational NL-to-SQL audience builder as a standalone agentic flow.</p>
         <div class="hero-project-arch">
-          <strong>Architecture:</strong> Spring Boot backend on Java 21 using Spring AI's ChatClient with advisor chains and tool-calling patterns, persisted to MongoDB Atlas on Azure. Agents are composed as directed acyclic graphs (DAGs) where each node represents a flow step &mdash; signal collection, AI reasoning, guardrails, or actions &mdash; with configurable routing between nodes. Domain gateway routes to configurable model providers (OpenAI, Azure OpenAI, or custom endpoints). NBA workspace supports 190K-monthly-volume load simulation with p50/p95/p99 latency reporting and circuit-breaker tuning. React frontend with Monaco editor, visual DAG canvas for flow authoring, real-time execution tracing, and a seed-bundle system for bootstrapping entire workspaces.
+          <strong>Architecture:</strong> Spring Boot backend on Java 21 using Spring AI's ChatClient with advisor chains and tool-calling patterns, persisted to MongoDB Atlas on Azure. Agents are composed as directed acyclic graphs (DAGs) where each node represents a flow step &mdash; signal collection, AI reasoning, guardrails, or actions &mdash; with configurable routing between nodes. Domain gateway routes to configurable model providers (OpenAI, Azure OpenAI, or custom endpoints). A dedicated NL-to-SQL audience builder flow lets users build and refine data audiences conversationally &mdash; the LLM translates natural language into structured filters, the backend deterministically compiles validated Oracle SQL, and the system supports multi-turn refinement (design, refine, explore) with semantic guardrails that prevent unsafe query compilation. NBA workspace supports 190K-monthly-volume load simulation with p50/p95/p99 latency reporting and circuit-breaker tuning. React frontend with Monaco editor, visual DAG canvas for flow authoring, real-time execution tracing, and a seed-bundle system for bootstrapping entire workspaces.
         </div>
         <div class="tech-pills" style="margin-top:8px">
-          <span class="tech-pill">Java 21</span><span class="tech-pill">Spring AI</span><span class="tech-pill">MongoDB Atlas</span><span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Monaco Editor</span><span class="tech-pill">Docker</span><span class="tech-pill">Oracle</span><span class="tech-pill">OpenAI API</span>
+          <span class="tech-pill">Java 21</span><span class="tech-pill">Spring AI</span><span class="tech-pill">MongoDB Atlas</span><span class="tech-pill">React</span><span class="tech-pill">TypeScript</span><span class="tech-pill">Monaco Editor</span><span class="tech-pill">NL-to-SQL</span><span class="tech-pill">Oracle</span><span class="tech-pill">Docker</span><span class="tech-pill">OpenAI API</span>
         </div>
       </div>
       <div class="hero-project-screenshots">
@@ -266,14 +266,14 @@ const projects = [
   {
     id:"insights",name:"Insights",category:"data",categoryLabel:"Data Engineering",
     image:"images/insights.png",
-    oneliner:"Embeddable analytics platform with NL-to-Query audience builder.",
-    highlight:"Natural language audience builder: type a question, get a query across Oracle, PostgreSQL, and MongoDB.",
-    architecture:"An Express API server queries Oracle, PostgreSQL, and MongoDB data sources across bronze/silver/gold tiers, with an NL-to-SQL pipeline powered by OpenAI that lets users build audiences and run analytics using natural language. A shared React UI package is wrapped in a custom web component for embeddable deployment into any host application.",
+    oneliner:"Embeddable analytics web component with multi-database query engine.",
+    highlight:"Embeddable web component surfacing interactive dashboards from Oracle, PostgreSQL, and MongoDB in any host app.",
+    architecture:"An Express API server queries Oracle, PostgreSQL, and MongoDB data sources across bronze/silver/gold tiers with a medallion data architecture. A shared React UI package is wrapped in a custom web component for embeddable deployment into any host application, with entitlement-based data access control.",
     features:[
-      "Natural language-to-query audience builder: type a question like 'show me users who churned last month' and get a working query across Oracle, PostgreSQL, or MongoDB",
-      "Embeddable web component wrapper around a shared React UI for drop-in analytics in any host application",
+      "Embeddable custom element wrapper around a shared React UI for drop-in analytics in any host application",
       "Medallion data architecture (bronze/silver/gold) with Oracle-to-Postgres ETL loaders and MongoDB analytics aggregation",
-      "Multi-database analytics backend with entitlement-based data access control and fixture-based NL accuracy evaluation"
+      "Multi-database analytics backend querying Oracle, PostgreSQL, and MongoDB with entitlement-based access control",
+      "Standalone dev app for local validation and a shared TypeScript types package across the monorepo"
     ],
     tech:["React","Express","Web Components","Oracle","PostgreSQL","MongoDB","OpenAI API","TypeScript","pnpm workspaces","Jest"]
   },
