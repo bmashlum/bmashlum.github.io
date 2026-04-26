@@ -3,419 +3,1448 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bradford Mashlum | Technical Product Manager</title>
+<meta name="description" content="Bradford Mashlum is a senior technical product manager building AI workflow platforms, data systems, developer tools, and trading systems.">
+<title>Bradford Mashlum | Senior Technical Product Manager</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0d0b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23bad46b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
 :root{
-  --bg:#08080a;--bg-elevated:#111114;--bg-card:#16161a;
-  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
-  --text-primary:#ededef;--text-secondary:#8a8a8e;--text-tertiary:#5a5a5e;
-  --ai-from:#6366f1;--ai-to:#a855f7;
-  --data-from:#06b6d4;--data-to:#10b981;
-  --trade-from:#f59e0b;--trade-to:#ef4444;
-  --tools-from:#ec4899;--tools-to:#f43f5e;
-  --font-display:'Instrument Serif',Georgia,serif;
-  --font-body:'DM Sans',-apple-system,sans-serif;
-  --font-mono:'JetBrains Mono',monospace;
+  --bg:#0c0d0b;
+  --surface:#131512;
+  --surface-2:#191b17;
+  --surface-3:#20231d;
+  --line:rgba(238,235,225,.12);
+  --line-strong:rgba(238,235,225,.22);
+  --text:#f1eee7;
+  --muted:#aaa69c;
+  --quiet:#77736b;
+  --accent:#bad46b;
+  --accent-2:#d57b55;
+  --accent-3:#76b89f;
+  --shadow:0 18px 55px rgba(0,0,0,.35);
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text-primary);font-family:var(--font-body);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
-.hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(99,102,241,0.08) 0%,transparent 70%);pointer-events:none;z-index:0}
-
-/* Header */
-header{position:relative;text-align:center;padding:80px 24px 48px;overflow:hidden}
-.header-rule{width:60px;height:1px;background:linear-gradient(90deg,var(--ai-from),var(--ai-to));border:none;margin:0 auto 28px;opacity:0;animation:fadeUp .6s ease forwards .2s}
-h1{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,5rem);font-weight:400;letter-spacing:-.02em;line-height:1.05;opacity:0;animation:fadeUp .8s ease forwards .3s}
-.subtitle{font-family:var(--font-mono);font-size:clamp(.65rem,1.2vw,.8rem);color:var(--text-tertiary);letter-spacing:.15em;text-transform:uppercase;margin-top:14px;opacity:0;animation:fadeUp .8s ease forwards .5s}
-.contact-row{display:flex;justify-content:center;gap:24px;margin-top:24px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards .6s}
-.contact-row a{color:var(--text-secondary);text-decoration:none;font-size:.82rem;transition:color .2s;display:flex;align-items:center;gap:5px}
-.contact-row a:hover{color:var(--text-primary)}
-.contact-row svg{width:13px;height:13px;opacity:.5}
-
-/* Stats */
-.stats-bar{display:flex;justify-content:center;gap:48px;padding:28px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:0 auto;max-width:700px;opacity:0;animation:fadeUp .8s ease forwards .7s}
-.stat{text-align:center}
-.stat-number{font-family:var(--font-display);font-size:2rem;font-style:italic}
-.stat-label{font-size:.68rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:.12em;margin-top:2px}
-
-/* Narrative */
-.narrative{max-width:700px;margin:0 auto;padding:44px 24px 0;opacity:0;animation:fadeUp .8s ease forwards .85s}
-.narrative-text{font-size:1rem;color:var(--text-secondary);line-height:1.75;text-align:center;font-weight:300}
-
-/* Cortex Hero - compact */
-.hero-project{max-width:1100px;margin:44px auto 0;padding:0 24px;opacity:0;animation:fadeUp .8s ease forwards 1s}
-.hero-project-inner{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:28px;position:relative;overflow:hidden}
-.hero-project-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ai-from),var(--ai-to))}
-.hero-label-row{display:flex;align-items:center;gap:12px;margin-bottom:16px}
-.hero-project-label{font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.15em;color:#a78bfa}
-.hero-project-content{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.hero-project-title{font-family:var(--font-display);font-size:1.8rem;letter-spacing:-.02em;margin-bottom:8px}
-.hero-project-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
-.hero-pm-frame{font-size:.78rem;color:var(--text-tertiary);line-height:1.55;padding:10px 12px;background:rgba(255,255,255,.02);border-left:2px solid var(--ai-from);border-radius:0 6px 6px 0;margin-bottom:12px}
-.hero-pm-frame strong{color:var(--text-secondary)}
-.hero-project-screenshots{display:flex;flex-direction:column;gap:6px}
-.hero-screenshot{border-radius:8px;border:1px solid var(--border)}
-.hero-screenshot.main{width:100%;height:auto;object-fit:cover}
-.hero-screenshot-row{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.hero-screenshot.secondary{width:100%;height:100px;object-fit:cover;opacity:.8;transition:opacity .3s}
-.hero-screenshot.secondary:hover{opacity:1}
-
-/* Section headers */
-.section-label{max-width:1100px;margin:48px auto 20px;padding:0 24px}
-.section-label h2{font-family:var(--font-display);font-size:1.6rem;font-weight:400;color:var(--text-primary)}
-.section-label p{font-size:.8rem;color:var(--text-tertiary);margin-top:4px}
-
-/* Grid */
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1100px;margin:0 auto;padding:0 24px}
-
-/* Cards - visible by default */
-.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .35s,box-shadow .35s;cursor:pointer;opacity:1}
-.project-card:hover{transform:translateY(-3px)}
-.project-card[data-category="ai"]:hover{box-shadow:0 8px 40px rgba(99,102,241,.1),0 0 0 1px rgba(99,102,241,.15)}
-.project-card[data-category="data"]:hover{box-shadow:0 8px 40px rgba(6,182,212,.1),0 0 0 1px rgba(6,182,212,.15)}
-.project-card[data-category="trading"]:hover{box-shadow:0 8px 40px rgba(245,158,11,.1),0 0 0 1px rgba(245,158,11,.15)}
-.project-card[data-category="tools"]:hover{box-shadow:0 8px 40px rgba(236,72,153,.1),0 0 0 1px rgba(236,72,153,.15)}
-
-.card-visual{height:140px;position:relative;overflow:hidden}
-.card-visual img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s,transform .5s cubic-bezier(.22,1,.36,1)}
-.project-card:hover .card-visual img{opacity:1;transform:scale(1.03)}
-.card-gradient{width:100%;height:100%;position:relative}
-.card-gradient.tools{background:linear-gradient(135deg,rgba(236,72,153,.2),rgba(244,63,94,.15))}
-.card-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.4rem;opacity:.25}
-
-/* Status + category badges */
-.card-badges{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between;align-items:flex-start}
-.card-category{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08)}
-.card-category.ai{color:#a78bfa}.card-category.data{color:#5eead4}.card-category.trading{color:#fbbf24}.card-category.tools{color:#f472b6}
-.card-status{font-family:var(--font-mono);font-size:.55rem;letter-spacing:.05em;padding:3px 8px;border-radius:4px;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.08)}
-.card-status.production{color:#4ade80}.card-status.live{color:#4ade80}.card-status.prototype{color:#fbbf24}.card-status.active{color:#60a5fa}
-
-.card-body{padding:16px}
-.card-title{font-family:var(--font-display);font-size:1.25rem;margin-bottom:4px}
-.card-description{font-size:.78rem;color:var(--text-secondary);line-height:1.45;margin-bottom:10px}
-.card-pm{font-size:.72rem;color:var(--text-tertiary);line-height:1.4;margin-bottom:10px;font-style:italic}
-.card-pm strong{color:var(--text-secondary);font-style:normal}
-.tech-pills{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
-.tech-pill{font-family:var(--font-mono);font-size:.58rem;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-secondary)}
-.card-expand{font-size:.65rem;color:var(--text-tertiary);text-align:right;opacity:.4}
-
-/* More Projects toggle */
-.more-toggle{text-align:center;padding:32px 24px 0}
-.more-btn{font-family:var(--font-body);font-size:.82rem;font-weight:500;padding:10px 28px;border:1px solid var(--border);border-radius:8px;background:var(--bg-elevated);color:var(--text-secondary);cursor:pointer;transition:all .25s}
-.more-btn:hover{color:var(--text-primary);border-color:var(--border-hover);background:rgba(255,255,255,.04)}
-.more-section{max-width:1100px;margin:24px auto 0;padding:0 24px 80px}
-.more-section.collapsed{display:none}
-
-/* Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:10000;display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .3s}
-.modal-overlay.open{display:flex;opacity:1}
-.modal{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;max-width:860px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
-.modal-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:8px;color:var(--text-secondary);width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;transition:all .2s;z-index:2}
-.modal-close:hover{background:rgba(255,255,255,.12);color:var(--text-primary)}
-.modal-image{width:100%;height:220px;object-fit:cover;border-radius:14px 14px 0 0}
-.modal-gradient-header{width:100%;height:100px;border-radius:14px 14px 0 0}
-.modal-body{padding:28px}
-.modal-header-row{display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap}
-.modal-title{font-family:var(--font-display);font-size:1.8rem}
-.modal-status-badge{font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;padding:3px 10px;border-radius:4px;border:1px solid}
-.modal-status-badge.production{color:#4ade80;border-color:rgba(74,222,128,.3)}.modal-status-badge.live{color:#4ade80;border-color:rgba(74,222,128,.3)}.modal-status-badge.prototype{color:#fbbf24;border-color:rgba(251,191,36,.3)}.modal-status-badge.active{color:#60a5fa;border-color:rgba(96,165,250,.3)}
-.modal-category-badge{font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;display:inline-block}
-.modal-section-label{font-family:var(--font-mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-tertiary);margin:20px 0 6px}
-.modal-pm-frame{font-size:.84rem;color:var(--text-secondary);line-height:1.65;padding:12px 14px;background:rgba(255,255,255,.02);border-left:2px solid;border-radius:0 6px 6px 0;margin-bottom:4px}
-.modal-pm-frame strong{color:var(--text-primary)}
-.modal-architecture{font-size:.84rem;color:var(--text-secondary);line-height:1.6;padding:12px 14px;background:rgba(255,255,255,.02);border-left:2px solid;border-radius:0 6px 6px 0}
-.modal-features{list-style:none;padding:0}
-.modal-features li{font-size:.82rem;color:var(--text-secondary);line-height:1.5;padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px}
-.modal-features li::before{content:'>';font-family:var(--font-mono);color:var(--text-tertiary);flex-shrink:0}
-.modal-features li:last-child{border:none}
-.modal-tech-grid{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
-.modal-screenshots{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
-.modal-screenshots img{width:100%;height:120px;object-fit:cover;border-radius:6px;border:1px solid var(--border)}
-
-footer{text-align:center;padding:40px 24px 56px;border-top:1px solid var(--border)}
-.footer-text{font-family:var(--font-display);font-style:italic;font-size:1.1rem;color:var(--text-tertiary)}
-.footer-sub{font-size:.68rem;color:var(--text-tertiary);margin-top:10px;opacity:.5}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:960px){.projects-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.hero-project-content{grid-template-columns:1fr}.modal-screenshots{grid-template-columns:1fr}}
-@media(max-width:600px){.projects-grid{grid-template-columns:1fr}.stats-bar{gap:28px}}
+body{
+  min-height:100vh;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.modal-open{overflow:hidden}
+img{max-width:100%;display:block}
+button,a{font:inherit}
+button{color:inherit}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.skip-link{
+  position:fixed;
+  left:16px;
+  top:16px;
+  z-index:2000;
+  transform:translateY(-120%);
+  background:var(--text);
+  color:var(--bg);
+  padding:10px 14px;
+  border-radius:6px;
+  font-weight:600;
+}
+.skip-link:focus{transform:translateY(0)}
+.page-shell{overflow:hidden}
+.topbar{
+  position:absolute;
+  inset:0 0 auto;
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:24px clamp(20px,4vw,56px);
+}
+.brand-mark{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--muted);
+  font-size:.86rem;
+  font-weight:600;
+}
+.brand-mark::before{
+  content:"";
+  width:9px;
+  height:9px;
+  background:var(--accent);
+  border-radius:50%;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.nav-links a,.cta{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  padding:9px 13px;
+  color:var(--muted);
+  background:rgba(12,13,11,.62);
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.nav-links a:hover,.cta:hover{color:var(--text);border-color:var(--line-strong);background:rgba(241,238,231,.06)}
+.cta.primary{background:var(--text);color:var(--bg);border-color:var(--text);font-weight:700}
+.cta.primary:hover{background:var(--accent);border-color:var(--accent);color:#11130f}
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:108px clamp(20px,4vw,56px) clamp(24px,4vw,44px);
+  border-bottom:1px solid var(--line);
+  isolation:isolate;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:1;
+  background:
+    linear-gradient(90deg,rgba(12,13,11,.99) 0%,rgba(12,13,11,.88) 38%,rgba(12,13,11,.42) 76%,rgba(12,13,11,.2) 100%),
+    linear-gradient(0deg,rgba(12,13,11,1) 0%,rgba(12,13,11,.18) 50%,rgba(12,13,11,.5) 100%);
+  pointer-events:none;
+}
+.hero-art{
+  position:absolute;
+  z-index:0;
+  right:clamp(-180px,-11vw,-80px);
+  bottom:clamp(62px,10vh,118px);
+  width:min(980px,70vw);
+  border:1px solid rgba(241,238,231,.18);
+  border-radius:8px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  background:var(--surface);
+}
+.hero-art img{
+  width:100%;
+  height:min(34vh,300px);
+  object-fit:cover;
+  object-position:center top;
+}
+.hero-art figcaption{
+  position:absolute;
+  left:14px;
+  bottom:12px;
+  padding:5px 8px;
+  border-radius:5px;
+  background:rgba(12,13,11,.72);
+  color:var(--muted);
+  border:1px solid var(--line);
+  font-family:var(--font-mono);
+  font-size:.68rem;
+}
+.hero-copy{
+  position:relative;
+  z-index:2;
+  width:min(760px,100%);
+  max-width:760px;
+  min-width:0;
+  display:grid;
+  gap:24px;
+}
+.role-line{
+  color:var(--accent);
+  font-family:var(--font-mono);
+  font-size:.86rem;
+  font-weight:600;
+}
+h1{
+  font-size:clamp(4.25rem,11vw,10.5rem);
+  line-height:.9;
+  letter-spacing:-.07em;
+  max-width:1020px;
+}
+.hero-lede{
+  width:min(640px,100%);
+  max-width:640px;
+  color:var(--muted);
+  font-size:clamp(1.06rem,2vw,1.34rem);
+  line-height:1.55;
+  overflow-wrap:break-word;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.proof-strip{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  max-width:1080px;
+  margin-top:clamp(42px,9vh,92px);
+  border:1px solid var(--line);
+  background:var(--line);
+}
+.proof-item{
+  list-style:none;
+  min-height:106px;
+  padding:18px;
+  background:rgba(19,21,18,.9);
+}
+.proof-number{
+  display:block;
+  color:var(--text);
+  font-size:1.55rem;
+  line-height:1.1;
+  font-weight:700;
+  letter-spacing:-.04em;
+}
+.proof-label{
+  display:block;
+  margin-top:8px;
+  color:var(--quiet);
+  font-size:.84rem;
+  line-height:1.4;
+}
+main{position:relative;background:var(--bg)}
+.section{
+  max-width:1180px;
+  margin:0 auto;
+  padding:92px clamp(20px,4vw,34px);
+}
+.section.compact{padding-top:62px}
+.section-kicker{
+  color:var(--accent);
+  font-family:var(--font-mono);
+  font-size:.76rem;
+  font-weight:600;
+  margin-bottom:14px;
+}
+.section h2{
+  max-width:760px;
+  font-size:clamp(2rem,4vw,4rem);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.section-intro{
+  max-width:720px;
+  margin-top:18px;
+  color:var(--muted);
+  font-size:1.03rem;
+}
+.operator-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(320px,.72fr);
+  gap:54px;
+  align-items:start;
+}
+.operator-copy p{
+  color:var(--muted);
+  max-width:760px;
+  font-size:1.08rem;
+}
+.operator-copy p+p{margin-top:18px}
+.signal-list{
+  border-top:1px solid var(--line);
+}
+.signal-row{
+  display:grid;
+  grid-template-columns:128px 1fr;
+  gap:20px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+.signal-row dt{
+  color:var(--text);
+  font-weight:700;
+  letter-spacing:-.02em;
+}
+.signal-row dd{
+  color:var(--muted);
+  font-size:.94rem;
+}
+.feature-case{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--surface);
+}
+.case-layout{
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:42px;
+  align-items:center;
+}
+.case-media{
+  display:grid;
+  gap:12px;
+}
+.case-media-main,.case-media-grid img{
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface-2);
+}
+.case-media-main{
+  aspect-ratio:16/8.2;
+  object-fit:cover;
+  object-position:center top;
+}
+.case-media-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.case-media-grid img{
+  aspect-ratio:16/10;
+  object-fit:cover;
+  object-position:center top;
+}
+.status-line{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:18px 0 22px;
+}
+.status-badge,.category-badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:26px;
+  border-radius:6px;
+  border:1px solid var(--line);
+  padding:4px 8px;
+  color:var(--muted);
+  font-family:var(--font-mono);
+  font-size:.72rem;
+}
+.status-badge.production,.status-badge.live{color:#a7d889}
+.status-badge.prototype,.status-badge.personal{color:#e2bb73}
+.status-badge.active{color:#8cc9ad}
+.case-summary{
+  display:grid;
+  gap:16px;
+  margin:24px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:18px 0;
+}
+.case-summary div{
+  display:grid;
+  grid-template-columns:98px 1fr;
+  gap:18px;
+}
+.case-summary dt,.case-summary h3{
+  color:var(--text);
+  font-size:.94rem;
+  font-weight:700;
+}
+.case-summary dd,.case-summary p{
+  color:var(--muted);
+  font-size:.94rem;
+}
+.tech-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.tech-pill{
+  display:inline-flex;
+  min-height:24px;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:6px;
+  color:var(--muted);
+  background:rgba(241,238,231,.03);
+  padding:3px 7px;
+  font-family:var(--font-mono);
+  font-size:.7rem;
+}
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:34px;
+}
+.project-card{
+  min-width:0;
+  text-align:left;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--surface);
+  cursor:pointer;
+  overflow:hidden;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.project-card:hover{
+  transform:translateY(-2px);
+  border-color:var(--line-strong);
+  background:var(--surface-2);
+}
+.project-card img,.synthetic-visual{
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  object-position:center top;
+  background:var(--surface-3);
+  border-bottom:1px solid var(--line);
+}
+.synthetic-visual{
+  display:grid;
+  align-content:end;
+  gap:10px;
+  padding:18px;
+}
+.synthetic-visual span{
+  display:block;
+  height:8px;
+  width:100%;
+  background:rgba(241,238,231,.13);
+  border-radius:3px;
+}
+.synthetic-visual span:nth-child(2){width:76%}
+.synthetic-visual span:nth-child(3){width:52%;background:rgba(186,212,107,.45)}
+.card-body{padding:14px}
+.card-meta{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:14px;
+}
+.card-title{
+  display:block;
+  color:var(--text);
+  font-size:1.08rem;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.03em;
+}
+.card-copy{
+  margin-top:9px;
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.45;
+}
+.card-outcome{
+  margin-top:13px;
+  color:var(--quiet);
+  font-size:.8rem;
+  line-height:1.4;
+}
+.card-action{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:18px;
+  color:var(--accent);
+  font-family:var(--font-mono);
+  font-size:.74rem;
+}
+.index-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
+  margin-top:36px;
+}
+.index-group{
+  border-top:1px solid var(--line);
+}
+.index-group h3{
+  padding:14px 0;
+  color:var(--text);
+  font-size:1rem;
+  letter-spacing:-.02em;
+}
+.index-row{
+  width:100%;
+  display:grid;
+  grid-template-columns:56px 1fr auto;
+  gap:14px;
+  align-items:center;
+  text-align:left;
+  padding:13px 0;
+  border:0;
+  border-top:1px solid var(--line);
+  background:transparent;
+  cursor:pointer;
+}
+.index-row:hover .index-title{color:var(--accent)}
+.index-row img,.index-thumb-fallback{
+  width:56px;
+  height:42px;
+  border-radius:6px;
+  object-fit:cover;
+  object-position:center top;
+  border:1px solid var(--line);
+  background:var(--surface-2);
+}
+.index-thumb-fallback{
+  display:grid;
+  place-items:center;
+  color:var(--quiet);
+  font-family:var(--font-mono);
+  font-size:.68rem;
+}
+.index-title{
+  display:block;
+  color:var(--text);
+  font-weight:700;
+  transition:color .18s ease;
+}
+.index-copy{
+  display:block;
+  margin-top:2px;
+  color:var(--quiet);
+  font-size:.82rem;
+  line-height:1.35;
+}
+.index-open{
+  color:var(--quiet);
+  font-family:var(--font-mono);
+  font-size:.76rem;
+}
+.contact-band{
+  border-top:1px solid var(--line);
+  background:var(--surface);
+}
+.contact-layout{
+  max-width:1180px;
+  margin:0 auto;
+  padding:56px clamp(20px,4vw,34px);
+  display:flex;
+  justify-content:space-between;
+  gap:28px;
+  align-items:center;
+}
+.contact-layout h2{
+  font-size:clamp(1.6rem,3vw,2.6rem);
+  line-height:1;
+  letter-spacing:-.045em;
+  max-width:640px;
+}
+.contact-layout p{
+  margin-top:10px;
+  color:var(--muted);
+  max-width:560px;
+}
+.contact-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+footer{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:24px clamp(20px,4vw,56px);
+  color:var(--quiet);
+  border-top:1px solid var(--line);
+  font-size:.82rem;
+}
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  display:grid;
+  place-items:center;
+  background:rgba(0,0,0,.72);
+  padding:22px;
+}
+.modal-overlay[hidden]{display:none}
+.modal-panel{
+  width:min(930px,100%);
+  max-height:min(86vh,920px);
+  overflow:auto;
+  border:1px solid var(--line-strong);
+  border-radius:8px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.modal-top{
+  position:sticky;
+  top:0;
+  z-index:2;
+  display:flex;
+  justify-content:flex-end;
+  padding:12px;
+  background:linear-gradient(180deg,var(--surface),rgba(19,21,18,.82));
+}
+.modal-close{
+  width:36px;
+  height:36px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  background:var(--surface-2);
+  cursor:pointer;
+}
+.modal-close:hover{border-color:var(--line-strong)}
+.modal-hero-img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  object-position:center top;
+  border-bottom:1px solid var(--line);
+  background:var(--surface-2);
+}
+.modal-fallback{
+  height:180px;
+  border-bottom:1px solid var(--line);
+  background:var(--surface-2);
+}
+.modal-body{
+  padding:30px;
+}
+.modal-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:16px;
+}
+.modal-title{
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+.modal-one-line{
+  max-width:720px;
+  color:var(--muted);
+  font-size:1rem;
+}
+.modal-proof{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin:26px 0;
+  border:1px solid var(--line);
+  background:var(--line);
+}
+.modal-proof div{
+  background:var(--surface-2);
+  padding:16px;
+}
+.modal-proof h3,.modal-section h3{
+  font-size:.8rem;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.modal-proof p,.modal-section p{
+  color:var(--muted);
+  font-size:.92rem;
+}
+.modal-section{
+  padding-top:22px;
+  margin-top:22px;
+  border-top:1px solid var(--line);
+}
+.feature-list{
+  list-style:none;
+  display:grid;
+  gap:10px;
+  padding:0;
+}
+.feature-list li{
+  color:var(--muted);
+  padding-left:18px;
+  position:relative;
+  font-size:.92rem;
+}
+.feature-list li::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.72em;
+  width:6px;
+  height:1px;
+  background:var(--accent);
+}
+.modal-screens{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:10px;
+}
+.modal-screens img{
+  border:1px solid var(--line);
+  border-radius:8px;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  object-position:center top;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .55s ease,transform .55s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+@media(max-width:1080px){
+  .work-grid{grid-template-columns:repeat(2,1fr)}
+  .case-layout,.operator-grid{grid-template-columns:1fr}
+  .hero-art{width:min(760px,72vw);right:-260px;opacity:.72}
+}
+@media(max-width:1200px){
+  .nav-links a[href="#project-index"]{display:none}
+}
+@media(max-width:760px){
+  .topbar{position:relative;display:grid;background:var(--bg);border-bottom:1px solid var(--line);padding:16px 20px}
+  .nav-links{flex-wrap:wrap}
+  .nav-links a[href="#project-index"]{display:none}
+  .hero{min-height:auto;padding:34px 20px 30px}
+  .hero::before{background:linear-gradient(0deg,var(--bg) 4%,rgba(12,13,11,.45) 58%,var(--bg) 100%)}
+  .hero-art{position:relative;right:auto;bottom:auto;width:100%;margin:28px 0 0;order:2;opacity:1}
+  .hero-art img{height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center top}
+  .hero-copy{order:1;width:100%;max-width:100%}
+  .hero-lede{width:100%;max-width:100%}
+  .proof-strip{order:3}
+  h1{font-size:clamp(3.55rem,18vw,5.4rem)}
+  .proof-strip{grid-template-columns:repeat(2,1fr);margin-top:30px}
+  .section{padding:66px 20px}
+  .work-grid,.index-grid,.modal-proof{grid-template-columns:1fr}
+  .case-summary div,.signal-row{grid-template-columns:1fr;gap:6px}
+  .contact-layout{display:grid;align-items:start}
+  .contact-actions{justify-content:flex-start}
+  footer{display:grid}
+  .modal-body{padding:22px}
+  .modal-heading{display:grid}
+  .modal-screens{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .topbar{align-items:flex-start}
+  .nav-links{width:100%}
+  .nav-links{gap:6px}
+  .nav-links a{flex:1 1 auto;padding:8px 10px}
+  .hero-actions .cta{width:100%}
+  .proof-strip{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr}
+  .index-row{grid-template-columns:48px 1fr}
+  .index-open{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+  .project-card:hover{transform:none}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to work</a>
+<div class="page-shell">
+  <header class="topbar" aria-label="Site header">
+    <a class="brand-mark" href="#top" aria-label="Bradford Mashlum home">Bradford Mashlum</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#case-study">Case Study</a>
+      <a href="#project-index">Project Index</a>
+      <a href="mailto:bmashlum@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/brad-mashlum" target="_blank" rel="noreferrer">LinkedIn</a>
+    </nav>
+  </header>
 
-<header>
-  <div class="hero-glow"></div>
-  <hr class="header-rule">
-  <h1>Bradford Mashlum</h1>
-  <p class="subtitle">Technical Product Manager &middot; AI, Platforms &amp; Integrations</p>
-  <div class="contact-row">
-    <a href="https://linkedin.com/in/brad-mashlum" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
-    <a href="mailto:bmashlum@gmail.com"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>bmashlum@gmail.com</a>
-    <a href="tel:6784447250"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>678-444-7250</a>
-    <a href="https://bmashlum.github.io"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>Portfolio</a>
-  </div>
-</header>
-
-<div class="stats-bar">
-  <div class="stat"><div class="stat-number">12</div><div class="stat-label">Projects</div></div>
-  <div class="stat"><div class="stat-number">4</div><div class="stat-label">Domains</div></div>
-  <div class="stat"><div class="stat-number">20+</div><div class="stat-label">Technologies</div></div>
-</div>
-
-<section class="narrative">
-  <p class="narrative-text">I'm an engineer who became a product leader because I couldn't stop building. By day, I lead technical product management &mdash; shipping platforms, integrations, and AI-enabled products. By night, I build trading systems, data platforms, AI orchestration engines, and autonomous dev tools. These are not tutorials I followed. These are problems I needed to solve.</p>
-</section>
-
-<!-- CORTEX HERO - trimmed -->
-<section class="hero-project">
-  <div class="hero-project-inner">
-    <div class="hero-label-row">
-      <span class="hero-project-label">Featured Project</span>
-      <span class="card-status production" style="font-size:.6rem">Production</span>
-    </div>
-    <div class="hero-project-content">
-      <div class="hero-project-info">
-        <h2 class="hero-project-title">Cortex</h2>
-        <p class="hero-project-desc">AI agent orchestration platform with a visual DAG-based flow builder, NL-to-SQL audience builder, and enterprise-scale load simulation.</p>
-        <div class="hero-pm-frame">
-          <strong>Problem:</strong> Teams needed to build AI-driven customer interactions but had no way to compose, test, or deploy agent flows without custom code.<br>
-          <strong>Decision:</strong> Built a DAG-based visual studio so non-engineers could author flows, with a deterministic backend that validates LLM-generated SQL before execution.<br>
-          <strong>Outcome:</strong> Load-tested for 190K monthly interactions with p50/p95/p99 reporting.
-        </div>
-        <div class="tech-pills">
-          <span class="tech-pill">Java 21</span><span class="tech-pill">Spring AI</span><span class="tech-pill">MongoDB Atlas</span><span class="tech-pill">React</span><span class="tech-pill">NL-to-SQL</span><span class="tech-pill">Monaco</span><span class="tech-pill">Docker</span>
-        </div>
-      </div>
-      <div class="hero-project-screenshots">
-        <img src="images/cortex-ui-1.png" alt="Cortex Flow Builder" class="hero-screenshot main">
-        <div class="hero-screenshot-row">
-          <img src="images/cortex-ui-2.png" alt="Cortex Mission Control" class="hero-screenshot secondary">
-          <img src="images/cortex-ui-3.png" alt="Cortex Runtime" class="hero-screenshot secondary">
-        </div>
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="role-line">Senior Technical Product Manager</p>
+      <h1 id="hero-title">Bradford Mashlum</h1>
+      <p class="hero-lede">I shape ambiguous platform bets into shipped systems: product strategy, API contracts, AI workflows, and the working prototypes that make the decision real.</p>
+      <div class="hero-actions" aria-label="Contact actions">
+        <a class="cta primary" href="mailto:bmashlum@gmail.com">Email Bradford</a>
+        <a class="cta" href="https://linkedin.com/in/brad-mashlum" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="cta" href="#case-study">See the work</a>
       </div>
     </div>
-  </div>
-</section>
+    <figure class="hero-art" aria-label="Cortex product screenshot">
+      <img src="images/cortex-ui-1.png" alt="Cortex visual flow builder product screen" fetchpriority="high">
+      <figcaption>Cortex flow builder</figcaption>
+    </figure>
+    <ul class="proof-strip" aria-label="Portfolio proof points">
+      <li class="proof-item"><span class="proof-number">7+ years</span><span class="proof-label">Software engineering to lead technical product management.</span></li>
+      <li class="proof-item"><span class="proof-number">12 builds</span><span class="proof-label">AI platforms, data systems, developer tools, and trading products.</span></li>
+      <li class="proof-item"><span class="proof-number">4 domains</span><span class="proof-label">Workflow orchestration, integrations, analytics, and automation.</span></li>
+      <li class="proof-item"><span class="proof-number">Prod / live / prototype</span><span class="proof-label">A portfolio that shows judgment across maturity levels.</span></li>
+    </ul>
+  </section>
 
-<!-- PRIMARY PROJECTS -->
-<div class="section-label"><h2>Featured Work</h2><p>Click any project to see architecture, features, and product decisions</p></div>
-<div class="projects-grid" id="primaryGrid"></div>
+  <main id="main">
+    <section class="section operator-grid reveal" aria-labelledby="operator-title">
+      <div class="operator-copy">
+        <p class="section-kicker">Operator-builder profile</p>
+        <h2 id="operator-title">The PM who can pressure-test the architecture in the room.</h2>
+        <p class="section-intro">My strongest work sits where product ambiguity, platform architecture, and operational delivery collide. I translate the business problem into system shape, then bring enough hands-on build fluency to make the tradeoffs concrete.</p>
+        <p>These samples are anonymized by design. The company names are less important than the decisions: what to automate, where to keep humans in the loop, how to keep platforms observable, and how to turn a prototype into a credible delivery path.</p>
+      </div>
+      <dl class="signal-list" aria-label="Senior TPM strengths">
+        <div class="signal-row">
+          <dt>Product judgment</dt>
+          <dd>Frames messy platform problems into user segments, release paths, risk gates, and outcome measures.</dd>
+        </div>
+        <div class="signal-row">
+          <dt>Architecture depth</dt>
+          <dd>Comfortable with APIs, data stores, workflow engines, AI orchestration, security constraints, and integration failure modes.</dd>
+        </div>
+        <div class="signal-row">
+          <dt>Delivery range</dt>
+          <dd>Moves between roadmap ownership, partner launch planning, technical discovery, prototype validation, and executive storytelling.</dd>
+        </div>
+        <div class="signal-row">
+          <dt>Recognition</dt>
+          <dd>Formally recognized for enterprise delivery and cross-functional product execution.</dd>
+        </div>
+      </dl>
+    </section>
 
-<!-- MORE PROJECTS -->
-<div class="more-toggle"><button class="more-btn" id="moreBtn">Show 6 More Projects</button></div>
-<div class="more-section collapsed" id="moreSection">
-  <div class="section-label"><h2>More Projects</h2></div>
-  <div class="projects-grid" id="secondaryGrid"></div>
+    <section class="feature-case" id="case-study" aria-labelledby="case-title">
+      <div class="section case-layout reveal">
+        <div class="case-media">
+          <img class="case-media-main" src="images/cortex-ui-1.png" alt="Cortex flow builder workspace">
+          <div class="case-media-grid">
+            <img src="images/cortex-ui-2.png" alt="Cortex mission control dashboard" loading="lazy">
+            <img src="images/cortex-ui-3.png" alt="Cortex runtime configuration screen" loading="lazy">
+          </div>
+        </div>
+        <div class="case-copy">
+          <p class="section-kicker">Featured case study</p>
+          <h2 id="case-title">Cortex, an AI workflow platform for composing agent-driven customer interactions.</h2>
+          <div class="status-line">
+            <span class="status-badge production">Production</span>
+            <span class="category-badge">AI workflow platforms</span>
+          </div>
+          <dl class="case-summary">
+            <div>
+              <dt>Problem</dt>
+              <dd>Teams needed to build AI-assisted interactions without turning every workflow into a one-off engineering project.</dd>
+            </div>
+            <div>
+              <dt>Decision</dt>
+              <dd>Use a visual DAG studio backed by deterministic validation, model routing, and guarded data retrieval instead of an open-ended chat surface.</dd>
+            </div>
+            <div>
+              <dt>Outcome</dt>
+              <dd>Validated with a 190K monthly interaction load simulation and p50/p95/p99 reporting, framed as scale readiness rather than adoption.</dd>
+            </div>
+          </dl>
+          <div class="tech-line" aria-label="Cortex tech stack">
+            <span class="tech-pill">Java 21</span>
+            <span class="tech-pill">Spring AI</span>
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">MongoDB Atlas</span>
+            <span class="tech-pill">NL-to-SQL</span>
+            <span class="tech-pill">Monaco</span>
+          </div>
+          <p style="margin-top:22px"><button class="cta primary" type="button" data-open="cortex">Open full case study</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact reveal" aria-labelledby="featured-title">
+      <p class="section-kicker">Selected proof</p>
+      <h2 id="featured-title">Projects that show the product decisions behind the screenshots.</h2>
+      <p class="section-intro">Each case study is written around problem, decision, outcome, and architecture so a hiring manager can see both product judgment and technical range quickly.</p>
+      <div class="work-grid" id="featuredGrid" aria-label="Featured projects"></div>
+    </section>
+
+    <section class="section compact reveal" id="project-index" aria-labelledby="index-title">
+      <p class="section-kicker">Project index</p>
+      <h2 id="index-title">A compact map of the portfolio.</h2>
+      <p class="section-intro">Twelve builds across AI workflows, data engineering, trading systems, and developer tools. External repo and demo links are held back until each URL is verified.</p>
+      <div class="index-grid" id="projectIndex"></div>
+    </section>
+  </main>
+
+  <section class="contact-band" aria-labelledby="contact-title">
+    <div class="contact-layout">
+      <div>
+        <h2 id="contact-title">Looking for a senior TPM who can make platforms legible?</h2>
+        <p>I am strongest on AI workflow products, integration-heavy platforms, data products, and teams that need someone who can move between strategy and system details.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="cta primary" href="mailto:bmashlum@gmail.com">bmashlum@gmail.com</a>
+        <a class="cta" href="https://linkedin.com/in/brad-mashlum" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Bradford Mashlum</span>
+    <span>Static GitHub Pages portfolio. Screenshots and case studies are anonymized.</span>
+  </footer>
 </div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
-    <button class="modal-close" id="modalClose">&times;</button>
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <article class="modal-panel" id="modalPanel" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <div class="modal-top">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close case study">&times;</button>
+    </div>
     <div id="modalContent"></div>
-  </div>
+  </article>
 </div>
-
-<footer>
-  <div class="footer-text">Built with passion. Always shipping.</div>
-  <div class="footer-sub">&copy; 2026 Bradford Mashlum</div>
-</footer>
 
 <script>
-const primaryProjects = [
+const projects = [
   {
-    name:"Say It Right",category:"ai",categoryLabel:"AI / ML",status:"Production",statusClass:"production",
+    slug:"cortex",
+    name:"Cortex",
+    category:"ai",
+    categoryLabel:"AI workflow platforms",
+    status:"Production",
+    statusClass:"production",
+    role:"0-to-1 product and platform architecture",
+    oneLiner:"AI agent orchestration platform with a visual DAG builder, guarded data retrieval, and NL-to-SQL audience workflows.",
+    problem:"Teams needed to build AI-assisted customer interactions, but each workflow required custom engineering and carried risk around data access, prompt behavior, and explainability.",
+    decision:"Design the product as a workflow studio instead of a chat surface: visual DAG authoring, model routing, deterministic validation, policy gates, and auditable runtime behavior.",
+    outcome:"Validated scale readiness with a 190K monthly interaction load simulation and p50/p95/p99 reporting. This is framed as load validation, not user adoption.",
+    architecture:"Java 21 and Spring AI backend with multi-model routing, MongoDB Atlas persistence, React studio UI, Monaco editors, and workflow execution primitives for DAG-based orchestration.",
+    features:[
+      "Visual DAG studio for composing agent steps, data lookups, validation gates, and next-best-action logic.",
+      "NL-to-SQL audience workflow with deterministic validation before execution.",
+      "Runtime reporting for p50/p95/p99 latency and load simulation readiness.",
+      "Guarded orchestration model designed for human-readable review and operational auditability."
+    ],
+    tech:["Java 21","Spring AI","Spring Boot","React","MongoDB Atlas","NL-to-SQL","Monaco","Docker"],
+    image:"images/cortex-ui-1.png",
+    screenshots:["images/cortex-ui-2.png","images/cortex-ui-3.png","images/cortex-architecture.png","images/cortex-agent.png"],
+    links:{repo:"",demo:""}
+  },
+  {
+    slug:"say-it-right",
+    name:"Say It Right",
+    category:"ai",
+    categoryLabel:"AI / compliance",
+    status:"Production",
+    statusClass:"production",
+    role:"AI product design and compliance workflow",
+    oneLiner:"AI-assisted legal review agent for outbound marketing messages with deterministic rules, LLM rewrite suggestions, and audit trails.",
+    problem:"Marketing drafts needed faster review, but full automation would create unacceptable compliance risk.",
+    decision:"Use a hybrid review model: deterministic rules catch known policy issues, LLM rewrites handle language nuance, and human review remains available for edge cases.",
+    outcome:"Created first-pass automation with a full review trail while preserving conservative compliance boundaries.",
+    architecture:"Java 21 Spring Boot backend with a hybrid compliance engine, OpenAI-compatible adapter, React and MUI review workbench, legal handoff queue, and persona insights dashboard.",
+    features:[
+      "Review pipeline for SMS, MMS, and email copy.",
+      "Deterministic legal rules paired with LLM rewrite suggestions.",
+      "Legal handoff queue with exportable evidence packages.",
+      "Persona insights dashboard for tone, trust, and phrase-risk patterns."
+    ],
+    tech:["Java 21","Spring Boot","React","MUI","MongoDB","OpenAI API","React Query"],
     image:"images/say-it-right.png",
-    oneliner:"AI-powered legal compliance review agent for outbound marketing messages.",
-    pm:"<strong>Problem:</strong> Outbound marketing drafts required manual legal review, creating a bottleneck. <strong>Tradeoff:</strong> Full automation risked compliance violations, so I designed a hybrid approach -- deterministic rules catch known issues, LLM rewrites handle nuance, humans sign off on edge cases. <strong>Outcome:</strong> First-pass automation with full audit trail and zero compliance risk increase.",
-    architecture:"Java 21 Spring Boot backend with hybrid compliance engine (deterministic rules + LLM rewrites via OpenAI-compatible adapter). React + MUI frontend with review workbench, legal handoff queue, and Persona Insights dashboard.",
-    features:["Hybrid review: deterministic legal rules + LLM-powered rewrite suggestions for SMS, MMS, and email","Legal handoff queue with export packages and full audit trail","Persona Insights dashboard: trust tiers, phrase fingerprints, tone signals, risk markers","Admin-controlled import pipeline for templates, guidelines, and research corpus"],
-    tech:["Java 21","Spring Boot 3.5","React","MUI","MongoDB","OpenAI API","React Query"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"TARS",category:"tools",categoryLabel:"Developer Tools",status:"Active Dev",statusClass:"active",
-    image:null,
-    oneliner:"Slack-controlled autonomous dev assistant that scans and fixes codebases.",
-    pm:"<strong>Problem:</strong> Code improvements pile up because nobody has time for low-priority fixes. <strong>Decision:</strong> Built an autonomous agent that scans repos, builds a prioritized backlog, and implements approved items via Claude Code -- with Slack reactions as the approval gate. <strong>Tradeoff:</strong> Autonomous execution requires trust boundaries, so every change runs in an isolated git clone with mandatory human approval before merge.",
-    architecture:"Electron desktop app + Python daemon communicating via IPC. Daemon scans repos with Claude CLI, implements fixes in parallel git checkouts. Shared SQLite (WAL mode) for concurrent access. Slack Bot for remote approvals.",
-    features:["Autonomous codebase scanning with Claude CLI -- discovers and prioritizes improvements into a ranked backlog","Ralph Wiggum technique: iterative code generation with test verification loops and auto branch management","Slack-controlled approvals via slash commands and emoji reactions","Parallel checkout architecture: multiple concurrent implementations, each in its own isolated git clone"],
-    tech:["Electron","React 19","TypeScript","Python","SQLite (WAL)","Claude CLI","Slack Bot SDK","Tailwind CSS","Vite"]
-  },
-  {
-    name:"Retention OS",category:"ai",categoryLabel:"AI / ML",status:"Prototype",statusClass:"prototype",
+    slug:"retention-os",
+    name:"Retention OS",
+    category:"ai",
+    categoryLabel:"ML product",
+    status:"Prototype",
+    statusClass:"prototype",
+    role:"Predictive product strategy and ML pipeline",
+    oneLiner:"Customer churn prediction and retention analytics platform with explainable risk scoring.",
+    problem:"Retention work was reactive: teams learned about churn after the customer had already left.",
+    decision:"Build a predictive pipeline that scores customer-level churn risk and exposes explainable drivers through SHAP-backed drilldowns.",
+    outcome:"Produced a prototype that translated model output into an operator-facing retention workflow.",
+    architecture:"Python FastAPI backend with XGBoost and scikit-learn models, Polars feature engineering, Cassandra source patterns, MLflow tracking, Airflow orchestration, Redis feature store, and React dashboards.",
+    features:[
+      "XGBoost churn pipeline with SHAP explainability.",
+      "Vectorized feature engineering with Polars and PyArrow patterns.",
+      "Model tracking and orchestration flow for repeatable experiments.",
+      "Cohort and customer drilldown views for intervention planning."
+    ],
+    tech:["Python","FastAPI","XGBoost","SHAP","Polars","Cassandra","MLflow","Airflow","Redis","React"],
     image:"images/retention-os.png",
-    oneliner:"ML-powered customer churn prediction and retention analytics platform.",
-    pm:"<strong>Problem:</strong> Reactive churn management -- teams only knew a customer churned after they left. <strong>Decision:</strong> Built a predictive pipeline that scores churn risk per-customer with explainable factors (SHAP), so retention teams can intervene before it's too late. <strong>Outcome:</strong> Per-customer risk scoring with drill-down to specific churn drivers.",
-    architecture:"Python FastAPI backend with XGBoost/scikit-learn models, Polars for high-performance feature engineering from Cassandra. React frontend with Recharts dashboards. MLflow tracking, Airflow orchestration, Redis feature store.",
-    features:["XGBoost churn pipeline with SHAP explainability for per-customer risk scoring","Polars-based vectorized feature engineering with PyArrow from Cassandra sources","MLflow model tracking with Airflow orchestration and Redis feature store","Retention dashboard with cohort analysis and real-time churn risk visualization"],
-    tech:["Python","FastAPI","XGBoost","SHAP","Polars","Cassandra","MLflow","Airflow","Redis","React","Recharts"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"Epoch",category:"trading",categoryLabel:"Trading Systems",status:"Live",statusClass:"live",
+    slug:"tars",
+    name:"TARS",
+    category:"tools",
+    categoryLabel:"Developer tools",
+    status:"Active Dev",
+    statusClass:"active",
+    role:"Autonomous development workflow",
+    oneLiner:"Slack-controlled autonomous dev assistant that scans codebases, proposes improvements, and implements approved fixes in isolated checkouts.",
+    problem:"Useful code improvements accumulate because they are important enough to notice but rarely urgent enough to schedule.",
+    decision:"Create an agentic workflow that scans repositories, ranks improvement work, and requires human approval before isolated implementation branches can move forward.",
+    outcome:"Designed an autonomy boundary that keeps execution fast while preserving review, approval, and merge control.",
+    architecture:"Electron desktop app and Python daemon communicating through IPC, Claude CLI execution, SQLite in WAL mode, parallel git checkouts, and Slack bot approval controls.",
+    features:[
+      "Codebase scanning that turns findings into a ranked improvement backlog.",
+      "Human approval through Slack commands and reactions.",
+      "Parallel isolated git checkouts for concurrent implementation attempts.",
+      "Verification loop that ties generated changes to tests and branch state."
+    ],
+    tech:["Electron","React","TypeScript","Python","SQLite WAL","Claude CLI","Slack Bot SDK","Vite"],
+    image:"",
+    screenshots:[],
+    links:{repo:"",demo:""}
+  },
+  {
+    slug:"epoch",
+    name:"Epoch",
+    category:"trading",
+    categoryLabel:"Trading systems",
+    status:"Live",
+    statusClass:"live",
+    role:"Event-driven product and risk system",
+    oneLiner:"Crypto auto-trading bot with event-driven execution, Coinbase integration, and crash-safe state management.",
+    problem:"Manual trading decisions were inconsistent, emotional, and hard to evaluate against a repeatable strategy.",
+    decision:"Separate market data, signals, risk, and execution through an async event bus so live trading and backtests share behavior.",
+    outcome:"Created a live system with trailing stops, daily kill switches, and deterministic backtest parity.",
+    architecture:"Python async event bus with Coinbase Advanced REST/WebSocket order management, SQLite state persistence, FastAPI services, and React dashboard over WebSocket.",
+    features:[
+      "Trailing stop and take-profit logic with configurable hysteresis.",
+      "Daily drawdown kill switch and fixed-fractional position sizing.",
+      "Backtester using the same event loop as live execution.",
+      "Real-time equity ledger and order status monitoring."
+    ],
+    tech:["Python","AsyncIO","FastAPI","Coinbase API","WebSocket","SQLite","React","Vite"],
     image:"images/epoch-dashboard.png",
-    oneliner:"Event-driven crypto auto-trading bot with trailing stops on Coinbase.",
-    pm:"<strong>Problem:</strong> Manual trading is emotional and inconsistent. <strong>Decision:</strong> Built an event-driven system where every component (signals, risk, execution) is decoupled via an async event bus -- making the system testable, debuggable, and crash-safe. <strong>Tradeoff:</strong> Backtester uses the exact same event loop as live trading, sacrificing backtest speed for guaranteed behavioral parity.",
-    architecture:"Python async event bus decoupling market data, signals, risk, and execution. Coinbase Advanced REST/WebSocket OMS with trailing stop ratcheting. SQLite for crash-safe state persistence. React dashboard via WebSocket.",
-    features:["Trailing stop/take-profit with configurable hysteresis, partial profit ladders, and daily kill-switch","Deterministic backtester: same event loop replays 1-min CSV bars with simulated fills","Live Coinbase OMS with REST/WebSocket order management and fill synchronization","Fixed-fractional sizing with daily drawdown kill switch and real-time equity ledger"],
-    tech:["Python","AsyncIO","FastAPI","Coinbase API","WebSocket","SQLite","React","Vite"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"Integrity Guardian",category:"data",categoryLabel:"Data Engineering",status:"Production",statusClass:"production",
+    slug:"guardian",
+    name:"Integrity Guardian",
+    category:"data",
+    categoryLabel:"Data engineering",
+    status:"Production",
+    statusClass:"production",
+    role:"Data quality product and rule engine",
+    oneLiner:"Real-time MongoDB data integrity monitor with YAML rules, alerts, and remediation workflows.",
+    problem:"Data integrity issues were discovered by users instead of systems, which made root-cause work slow and reactive.",
+    decision:"Turn business invariants into versionable YAML rules so integrity logic could be reviewed, audited, and run continuously.",
+    outcome:"Enabled real-time violation detection, suggested remediation, and operator-friendly diff views.",
+    architecture:"Node.js Express backend running a rule engine against MongoDB clusters, Socket.IO alerting, Next.js frontend, Monaco YAML editor, and topology/latency visualizations.",
+    features:[
+      "Orphan, aging, staleness, and raw query integrity checks.",
+      "Real-time alerting with suggested remediation playbooks.",
+      "Monaco rule editor with schema-aware authoring patterns.",
+      "Multi-cluster monitoring with latency and topology visibility."
+    ],
+    tech:["Next.js","TypeScript","Express","MongoDB","Socket.IO","D3.js","Monaco","Turborepo"],
     image:"images/guardian-dashboard.png",
-    oneliner:"Real-time MongoDB data integrity monitor with auto-remediation playbooks.",
-    pm:"<strong>Problem:</strong> Data integrity issues in MongoDB were discovered by users, not systems. <strong>Decision:</strong> Built a rule engine where business logic invariants are defined in YAML -- making rules versionable, auditable, and authorable by non-engineers. <strong>Outcome:</strong> Real-time violation detection with one-click auto-remediation and full diff views.",
-    architecture:"Node.js Express backend running a GuardianEngine that executes YAML-defined rules (orphan, aging, raw query) against MongoDB clusters. Socket.IO pushes real-time alerts. Next.js 14 frontend with Monaco rule editor and mission dashboard.",
-    features:["Three-mode integrity rules: orphan detection, aging/staleness checks, and custom raw MongoDB queries","Real-time Socket.IO alerts with auto-fix suggestions and configurable remediation playbooks","Monaco-powered YAML rule editor with MongoDB schema introspection","Multi-cluster monitoring with latency tracking and topology visualization"],
-    tech:["Next.js 14","TypeScript","Express","MongoDB","Socket.IO","D3.js","shadcn/ui","Monaco Editor","Turborepo"]
-  }
-];
-
-const secondaryProjects = [
+    screenshots:[],
+    links:{repo:"",demo:""}
+  },
   {
-    name:"Data Loader",category:"data",categoryLabel:"Data Engineering",status:"Production",statusClass:"production",
+    slug:"data-loader",
+    name:"Data Loader",
+    category:"data",
+    categoryLabel:"Data engineering",
+    status:"Production",
+    statusClass:"production",
+    role:"Migration tooling and operator UX",
+    oneLiner:"Visual drag-and-drop ETL tool for Cassandra-to-MongoDB migration with checkpoint recovery.",
+    problem:"Database migrations required custom scripts for each schema and offered limited visibility once jobs started.",
+    decision:"Build a visual mapping tool with schema discovery, type conversion, and checkpoint-based recovery so migrations became repeatable.",
+    outcome:"Reduced migration work from custom one-off scripts to a guided operator workflow.",
+    architecture:"Spring Boot backend streaming data between Cassandra and MongoDB, React Flow frontend for field mapping, Redux Toolkit state, and WebSocket/STOMP progress reporting.",
+    features:[
+      "Visual field mapping with auto schema discovery.",
+      "Checkpoint recovery and circuit breaker patterns.",
+      "Type transformation for UDTs and nested documents.",
+      "Real-time progress monitoring through WebSockets."
+    ],
+    tech:["Java 17","Spring Boot","React Flow","Cassandra","MongoDB","WebSocket","Redux Toolkit"],
     image:"images/data-loader.png",
-    oneliner:"Visual drag-and-drop ETL tool for Cassandra-to-MongoDB migration.",
-    pm:"<strong>Problem:</strong> Database migrations required custom scripts per schema. <strong>Decision:</strong> Built a visual mapper so teams could drag-and-drop field mappings with auto-detected schemas and type conversion.",
-    architecture:"Spring Boot backend streaming data between Cassandra and MongoDB with checkpoint recovery. React Flow frontend for visual field mapping. WebSocket STOMP for real-time progress.",
-    features:["Visual React Flow field mapping with auto schema discovery","Checkpoint-based crash recovery with circuit breakers","Pluggable type transformation for UDTs and nested documents","Real-time WebSocket progress monitoring"],
-    tech:["Java 17","Spring Boot 3","React Flow","Cassandra","MongoDB","WebSocket","Redux Toolkit"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"Insights",category:"data",categoryLabel:"Data Engineering",status:"Production",statusClass:"production",
+    slug:"insights",
+    name:"Insights",
+    category:"data",
+    categoryLabel:"Analytics platform",
+    status:"Production",
+    statusClass:"production",
+    role:"Embedded analytics product",
+    oneLiner:"Embeddable analytics web component with multi-database query access and entitlement controls.",
+    problem:"Teams needed analytics inside their existing workflows rather than another dashboard destination.",
+    decision:"Package analytics as a drop-in web component backed by entitlement-aware query services.",
+    outcome:"Created a reusable pattern for embedding data products inside host applications.",
+    architecture:"Express API querying Oracle, PostgreSQL, and MongoDB across medallion-style tiers, with shared React UI wrapped as a custom element.",
+    features:[
+      "Embeddable web component for host application integration.",
+      "Multi-database backend with entitlement-aware access.",
+      "Medallion architecture patterns across operational and analytics stores.",
+      "Standalone dev app for validation before embedding."
+    ],
+    tech:["React","Express","Web Components","Oracle","PostgreSQL","MongoDB","TypeScript"],
     image:"images/insights.png",
-    oneliner:"Embeddable analytics web component with multi-database query engine.",
-    pm:"<strong>Problem:</strong> Teams needed analytics in their existing tools, not another dashboard to visit. <strong>Decision:</strong> Built a custom web component that drops into any host app with entitlement-based access control.",
-    architecture:"Express API querying Oracle, PostgreSQL, and MongoDB across bronze/silver/gold tiers. Shared React UI wrapped in a custom element for embeddable deployment.",
-    features:["Embeddable web component for drop-in analytics in any host app","Medallion data architecture with Oracle-to-Postgres ETL","Multi-database backend with entitlement-based access control","Standalone dev app for local validation"],
-    tech:["React","Express","Web Components","Oracle","PostgreSQL","MongoDB","TypeScript"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"Trading Signals",category:"trading",categoryLabel:"Trading Systems",status:"Personal Build",statusClass:"prototype",
+    slug:"trading-signals",
+    name:"Trading Signals",
+    category:"trading",
+    categoryLabel:"Trading systems",
+    status:"Personal Build",
+    statusClass:"personal",
+    role:"Decision support and risk UI",
+    oneLiner:"Real-time NVDA momentum dashboard with scoring, backtesting, and position-sizing logic.",
+    problem:"Technical signals, risk sizing, and market context lived in separate places, making decisions fragmented.",
+    decision:"Combine factor scoring, strategy-specific stop logic, and backtest feedback in one decision workspace.",
+    outcome:"Built a single-screen signal system for comparing momentum, risk, and historical behavior.",
+    architecture:"Next.js 14 app with Alpha Vantage data, RSI/EMA/MACD/ATR/VWAP calculations, Chart.js visualizations, and Framer Motion transitions.",
+    features:[
+      "Seven-factor weighted momentum scoring.",
+      "Stop-loss strategy comparison and Kelly-inspired sizing.",
+      "Backtesting with Sharpe ratio and drawdown views.",
+      "News sentiment inputs alongside technical indicators."
+    ],
+    tech:["Next.js","TypeScript","Chart.js","Alpha Vantage","Framer Motion","Tailwind CSS"],
     image:"images/trading-signals.png",
-    oneliner:"Real-time NVDA momentum signals with backtesting and Kelly-optimal sizing.",
-    pm:"<strong>Problem:</strong> Wanted a single-screen view combining technical analysis, position sizing, and news sentiment. <strong>Decision:</strong> Built a 7-factor weighted scoring engine with integrated backtesting.",
-    architecture:"Next.js 14 with Alpha Vantage data, computing RSI/EMA/MACD/ATR/VWAP through a weighted scoring system. Framer Motion animations, Chart.js visualizations.",
-    features:["7-dimension weighted momentum scoring with AI news sentiment","Five NVDA-optimized stop-loss strategies","Kelly Criterion position sizing with earnings adjustment","Integrated backtesting with Sharpe ratio and drawdown metrics"],
-    tech:["Next.js 14","TypeScript","Tailwind CSS","Chart.js","Alpha Vantage API","Framer Motion"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"SMC SwingTrader",category:"trading",categoryLabel:"Trading Systems",status:"Personal Build",statusClass:"prototype",
+    slug:"smc-swingtrader",
+    name:"SMC SwingTrader",
+    category:"trading",
+    categoryLabel:"Trading systems",
+    status:"Personal Build",
+    statusClass:"personal",
+    role:"Scanner workflow and discipline engine",
+    oneLiner:"Smart Money Concept swing trading workstation with multi-timeframe scanning and journaling.",
+    problem:"Manual SMC analysis required scanning multiple timeframes and remembering risk discipline under pressure.",
+    decision:"Move setup detection into a background scanner and keep risk rules visible inside the workflow.",
+    outcome:"Created a workstation for setup discovery, trade lifecycle tracking, and equity feedback.",
+    architecture:"Next.js 14 app with a separate scanner worker, SQLite persistence, Zustand state, provider abstraction, cache policies, and deterministic detection tests.",
+    features:[
+      "Multi-timeframe scanner for liquidity sweeps, structure shifts, and fair value gaps.",
+      "Risk discipline engine with maximum risk and reward-to-risk thresholds.",
+      "Trade journal with lifecycle state and equity curves.",
+      "Provider-agnostic data layer with quota management."
+    ],
+    tech:["Next.js","TypeScript","SQLite","Zustand","Recharts","Radix UI","Vitest"],
     image:"images/smc-swingtrader.png",
-    oneliner:"ICT/Smart Money Concept swing trading workstation with live scanner.",
-    pm:"<strong>Problem:</strong> ICT/SMC analysis requires scanning multiple timeframes simultaneously. <strong>Decision:</strong> Built a background scanner worker that detects setups across daily, 4H, and 15-minute charts autonomously.",
-    architecture:"Next.js 14 with separate scanner worker process. SQLite persistence. Provider abstraction with cache policies and quota management. Pure detection algorithms isolated for deterministic testing.",
-    features:["Multi-timeframe scanner for liquidity sweeps, structure shifts, and fair value gaps","Strict discipline engine: 1-2% max risk, 3:1 minimum R:R","Trade journal with lifecycle tracking and equity curves","Provider-agnostic data layer with quota management"],
-    tech:["Next.js 14","TypeScript","SQLite","Zustand","Recharts","Radix UI","Vitest"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   },
   {
-    name:"Flow Doc Generator",category:"tools",categoryLabel:"Developer Tools",status:"Prototype",statusClass:"prototype",
+    slug:"flow-doc-generator",
+    name:"Flow Doc Generator",
+    category:"tools",
+    categoryLabel:"Developer tools",
+    status:"Prototype",
+    statusClass:"prototype",
+    role:"Documentation automation",
+    oneLiner:"Chrome extension that records user flows and generates AI-assisted training documentation.",
+    problem:"Training docs for web products are tedious to write and drift out of date as workflows change.",
+    decision:"Record real user interactions, capture screenshots, and use AI to draft narrated documentation that humans can edit before publishing.",
+    outcome:"Turned documentation from blank-page writing into a review workflow backed by captured evidence.",
+    architecture:"Chrome Manifest V3 extension, content scripts, tab capture, Express backend, OpenAI-assisted narration, Puppeteer screenshots, Tiptap editor, and Remotion video generation.",
+    features:[
+      "Interaction capture through a browser extension.",
+      "AI-assisted narration and step annotation.",
+      "Rich-text review and publishing workflow.",
+      "Automated PDF and video output paths."
+    ],
+    tech:["Chrome Extension","TypeScript","React","Express","OpenAI API","Puppeteer","Remotion","Tiptap"],
     image:"images/flow-doc-dashboard.png",
-    oneliner:"Chrome extension that records user flows and generates AI training docs.",
-    pm:"<strong>Problem:</strong> Writing training documentation for web apps is tedious and always outdated. <strong>Decision:</strong> Built a Chrome extension that records real interactions and auto-generates narrated docs with screenshots.",
-    architecture:"Chrome Manifest V3 extension with content scripts and tab capture. Express backend uses OpenAI + Puppeteer for AI narration and screenshots. React portal with Tiptap editor for review. Remotion for video generation.",
-    features:["Chrome extension captures complete user interaction flows","AI-powered narration and step annotation via OpenAI","Tiptap rich text editor for review and publishing","Automated video via Remotion and PDF via Puppeteer"],
-    tech:["Chrome Extension V3","TypeScript","React","Express","OpenAI API","Puppeteer","Remotion","Tiptap","Playwright"],
-    extraImages:["images/flow-doc-analytics.png","images/flow-doc-templates.png"]
+    screenshots:["images/flow-doc-analytics.png","images/flow-doc-templates.png","images/flow-doc-review-queue.png"],
+    links:{repo:"",demo:""}
   },
   {
-    name:"SimFlow",category:"tools",categoryLabel:"Developer Tools",status:"Prototype",statusClass:"prototype",
+    slug:"simflow",
+    name:"SimFlow",
+    category:"tools",
+    categoryLabel:"Developer tools",
+    status:"Prototype",
+    statusClass:"prototype",
+    role:"Mock API product",
+    oneLiner:"Visual API simulation and mock server with endpoint rules, latency injection, and scenario management.",
+    problem:"Frontend work was blocked when backend APIs were unavailable, incomplete, or too unstable for repeatable testing.",
+    decision:"Create a visual mock server where teams can define endpoints, response logic, and scenarios without writing new backend code.",
+    outcome:"Produced a workflow for unblocking frontend development and validating edge-case behavior earlier.",
+    architecture:"Express and TypeScript backend with Mongoose configuration storage, React client, MUI components, CodeMirror JSON editing, scenario orchestration, and request logging.",
+    features:[
+      "Dynamic response rules with latency injection.",
+      "Scenario switching for multi-step API workflows.",
+      "Request logs for debugging simulated integrations.",
+      "CodeMirror JSON editor with validation."
+    ],
+    tech:["TypeScript","Express","MongoDB","React","MUI","CodeMirror","Zustand","Vitest"],
     image:"images/simflow.png",
-    oneliner:"Visual API simulation and mock server with scenario management.",
-    pm:"<strong>Problem:</strong> Frontend teams were blocked waiting for backend APIs. <strong>Decision:</strong> Built a visual mock server where anyone can define endpoints, response rules, and scenarios without writing code.",
-    architecture:"Express/TypeScript backend with Mongoose for configurable endpoint simulation. React client with MUI and CodeMirror for JSON editing. Scenario orchestration for multi-step workflows.",
-    features:["Dynamic response rules with latency injection and scenario switching","Service-level mock management with request log tracking","CodeMirror JSON editor with real-time validation","Scenario orchestration for multi-step API workflows"],
-    tech:["TypeScript","Express","MongoDB","React","MUI","CodeMirror","Zustand","Vitest"]
+    screenshots:[],
+    links:{repo:"",demo:""}
   }
 ];
 
-const categoryColors = {ai:"var(--ai-from)",data:"var(--data-from)",trading:"var(--trade-from)",tools:"var(--tools-from)"};
+const featuredSlugs = ["say-it-right","guardian","tars","retention-os"];
+const projectGroups = [
+  {label:"AI workflow platforms", slugs:["cortex","say-it-right","retention-os"]},
+  {label:"Data systems", slugs:["guardian","data-loader","insights"]},
+  {label:"Trading systems", slugs:["epoch","trading-signals","smc-swingtrader"]},
+  {label:"Developer tools", slugs:["tars","flow-doc-generator","simflow"]}
+];
+const projectBySlug = new Map(projects.map(project => [project.slug, project]));
+let previouslyFocused = null;
 
-function renderCard(p) {
-  const card = document.createElement('div');
-  card.className = 'project-card';
-  card.dataset.category = p.category;
-  const visual = p.image
-    ? `<img src="${p.image}" alt="${p.name}">`
-    : `<div class="card-gradient ${p.category}"><span class="card-icon">\u2699</span></div>`;
-  card.innerHTML = `
-    <div class="card-visual">
-      ${visual}
-      <div class="card-badges">
-        <span class="card-category ${p.category}">${p.categoryLabel}</span>
-        <span class="card-status ${p.statusClass}">${p.status}</span>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="card-title">${p.name}</div>
-      <div class="card-description">${p.oneliner}</div>
-      <div class="card-pm">${p.pm.split('<strong>')[1] ? '<strong>' + p.pm.split('<strong>')[1].split('</strong>')[0] + '</strong>' + p.pm.split('</strong>')[0].slice(p.pm.split('</strong>')[0].lastIndexOf('<strong>')) : ''}</div>
-      <div class="tech-pills">${p.tech.slice(0,5).map(t=>`<span class="tech-pill">${t}</span>`).join('')}</div>
-      <div class="card-expand">Click to explore &rarr;</div>
-    </div>`;
-  // Fix the PM preview - just show the Problem line
-  const pmEl = card.querySelector('.card-pm');
-  const problemMatch = p.pm.match(/<strong>Problem:<\/strong>\s*([^<]+)/);
-  pmEl.innerHTML = problemMatch ? `<strong>Problem:</strong> ${problemMatch[1].trim()}` : '';
-  card.addEventListener('click', () => openModal(p));
-  return card;
+function el(tag, options = {}) {
+  const node = document.createElement(tag);
+  if (options.className) node.className = options.className;
+  if (options.text) node.textContent = options.text;
+  if (options.html) node.innerHTML = options.html;
+  if (options.attrs) {
+    Object.entries(options.attrs).forEach(([key, value]) => {
+      if (value !== undefined && value !== null) node.setAttribute(key, value);
+    });
+  }
+  return node;
 }
 
-// Render primary grid
-const primaryGrid = document.getElementById('primaryGrid');
-primaryProjects.forEach(p => primaryGrid.appendChild(renderCard(p)));
+function addImage(parent, project, className, loading = "lazy") {
+  if (!project.image) {
+    const fallback = el("div", {className:"synthetic-visual", attrs:{"aria-hidden":"true"}});
+    fallback.append(el("span"), el("span"), el("span"));
+    parent.appendChild(fallback);
+    return;
+  }
+  const image = el("img", {
+    className,
+    attrs:{
+      src:project.image,
+      alt:`${project.name} product screen`,
+      loading
+    }
+  });
+  parent.appendChild(image);
+}
 
-// Render secondary grid
-const secondaryGrid = document.getElementById('secondaryGrid');
-secondaryProjects.forEach(p => secondaryGrid.appendChild(renderCard(p)));
+function renderTech(parent, tech, limit) {
+  tech.slice(0, limit || tech.length).forEach(item => {
+    parent.appendChild(el("span", {className:"tech-pill", text:item}));
+  });
+}
 
-// More toggle
-const moreBtn = document.getElementById('moreBtn');
-const moreSection = document.getElementById('moreSection');
-moreBtn.addEventListener('click', () => {
-  moreSection.classList.toggle('collapsed');
-  moreBtn.textContent = moreSection.classList.contains('collapsed') ? 'Show 6 More Projects' : 'Show Less';
-});
+function renderFeaturedCards() {
+  const grid = document.getElementById("featuredGrid");
+  featuredSlugs.forEach(slug => {
+    const project = projectBySlug.get(slug);
+    const card = el("button", {
+      className:"project-card",
+      attrs:{
+        type:"button",
+        "data-open":project.slug,
+        "aria-label":`Open ${project.name} case study`
+      }
+    });
+    addImage(card, project, "", "lazy");
+    const body = el("div", {className:"card-body"});
+    const meta = el("div", {className:"card-meta"});
+    meta.append(
+      el("span", {className:`status-badge ${project.statusClass}`, text:project.status}),
+      el("span", {className:"category-badge", text:project.categoryLabel})
+    );
+    body.append(
+      meta,
+      el("span", {className:"card-title", text:project.name}),
+      el("p", {className:"card-copy", text:project.oneLiner}),
+      el("p", {className:"card-outcome", text:project.outcome}),
+      el("span", {className:"card-action", html:"Open case study <span aria-hidden=\"true\">-&gt;</span>"})
+    );
+    card.appendChild(body);
+    grid.appendChild(card);
+  });
+}
 
-// Modal
-const overlay = document.getElementById('modalOverlay');
-document.getElementById('modalClose').addEventListener('click', closeModal);
-overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+function renderProjectIndex() {
+  const index = document.getElementById("projectIndex");
+  projectGroups.forEach(group => {
+    const section = el("section", {className:"index-group", attrs:{"aria-label":group.label}});
+    section.appendChild(el("h3", {text:group.label}));
+    group.slugs.forEach(slug => {
+      const project = projectBySlug.get(slug);
+      const row = el("button", {
+        className:"index-row",
+        attrs:{
+          type:"button",
+          "data-open":project.slug,
+          "aria-label":`Open ${project.name} case study`
+        }
+      });
+      if (project.image) {
+        row.appendChild(el("img", {
+          attrs:{
+            src:project.image,
+            alt:"",
+            loading:"lazy"
+          }
+        }));
+      } else {
+        row.appendChild(el("span", {className:"index-thumb-fallback", text:"DEV"}));
+      }
+      const copy = el("span");
+      copy.append(
+        el("span", {className:"index-title", text:project.name}),
+        el("span", {className:"index-copy", text:project.oneLiner})
+      );
+      row.append(copy, el("span", {className:"index-open", text:"Open"}));
+      section.appendChild(row);
+    });
+    index.appendChild(section);
+  });
+}
 
-function openModal(p) {
-  const mc = document.getElementById('modalContent');
-  const img = p.image ? `<img class="modal-image" src="${p.image}" alt="${p.name}">` : `<div class="modal-gradient-header card-gradient ${p.category}"></div>`;
-  const extra = p.extraImages ? `<div class="modal-section-label">More Screenshots</div><div class="modal-screenshots">${p.extraImages.map(i=>`<img src="${i}" alt="${p.name}">`).join('')}</div>` : '';
-  mc.innerHTML = `${img}
-    <div class="modal-body">
-      <div class="modal-header-row">
-        <div class="modal-title">${p.name}</div>
-        <span class="modal-status-badge ${p.statusClass}">${p.status}</span>
-      </div>
-      <div class="modal-category-badge" style="color:${categoryColors[p.category]}">${p.categoryLabel}</div>
-      <div class="modal-section-label">Product Thinking</div>
-      <div class="modal-pm-frame" style="border-color:${categoryColors[p.category]}">${p.pm}</div>
-      <div class="modal-section-label">Architecture</div>
-      <div class="modal-architecture" style="border-color:${categoryColors[p.category]}">${p.architecture}</div>
-      <div class="modal-section-label">Key Features</div>
-      <ul class="modal-features">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>
-      <div class="modal-section-label">Tech Stack</div>
-      <div class="modal-tech-grid">${p.tech.map(t=>`<span class="tech-pill">${t}</span>`).join('')}</div>
-      ${extra}
-    </div>`;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+function modalImage(project) {
+  if (!project.image) return el("div", {className:"modal-fallback"});
+  return el("img", {
+    className:"modal-hero-img",
+    attrs:{
+      src:project.image,
+      alt:`${project.name} product screen`
+    }
+  });
+}
+
+function openModal(slug) {
+  const project = projectBySlug.get(slug);
+  if (!project) return;
+  const overlay = document.getElementById("modalOverlay");
+  const content = document.getElementById("modalContent");
+  content.replaceChildren();
+  content.appendChild(modalImage(project));
+
+  const body = el("div", {className:"modal-body"});
+  const heading = el("div", {className:"modal-heading"});
+  const titleWrap = el("div");
+  titleWrap.append(
+    el("h2", {className:"modal-title", text:project.name, attrs:{id:"modalTitle"}}),
+    el("p", {className:"modal-one-line", text:project.oneLiner})
+  );
+  heading.append(
+    titleWrap,
+    el("span", {className:`status-badge ${project.statusClass}`, text:project.status})
+  );
+
+  const proof = el("div", {className:"modal-proof"});
+  [
+    ["Problem", project.problem],
+    ["Decision", project.decision],
+    ["Outcome", project.outcome]
+  ].forEach(([label, text]) => {
+    const item = el("div");
+    item.append(el("h3", {text:label}), el("p", {text}));
+    proof.appendChild(item);
+  });
+
+  const architecture = el("section", {className:"modal-section"});
+  architecture.append(el("h3", {text:"Architecture"}), el("p", {text:project.architecture}));
+
+  const features = el("section", {className:"modal-section"});
+  const list = el("ul", {className:"feature-list"});
+  project.features.forEach(feature => list.appendChild(el("li", {text:feature})));
+  features.append(el("h3", {text:"Key features"}), list);
+
+  const tech = el("section", {className:"modal-section"});
+  const techLine = el("div", {className:"tech-line"});
+  renderTech(techLine, project.tech);
+  tech.append(el("h3", {text:"Tech stack"}), techLine);
+
+  body.append(heading, proof, architecture, features, tech);
+  if (project.screenshots.length) {
+    const shots = el("section", {className:"modal-section"});
+    const shotGrid = el("div", {className:"modal-screens"});
+    project.screenshots.forEach((src, index) => {
+      shotGrid.appendChild(el("img", {
+        attrs:{
+          src,
+          alt:`${project.name} supporting product screen ${index + 1}`,
+          loading:"lazy"
+        }
+      }));
+    });
+    shots.append(el("h3", {text:"Additional screens"}), shotGrid);
+    body.appendChild(shots);
+  }
+
+  content.appendChild(body);
+  previouslyFocused = document.activeElement;
+  overlay.hidden = false;
+  document.body.classList.add("modal-open");
+  document.getElementById("modalPanel").focus();
+  document.addEventListener("keydown", onModalKeydown);
 }
 
 function closeModal() {
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
+  const overlay = document.getElementById("modalOverlay");
+  overlay.hidden = true;
+  document.body.classList.remove("modal-open");
+  document.removeEventListener("keydown", onModalKeydown);
+  if (previouslyFocused && typeof previouslyFocused.focus === "function") {
+    previouslyFocused.focus();
+  }
 }
+
+function onModalKeydown(event) {
+  if (event.key === "Escape") {
+    closeModal();
+    return;
+  }
+  if (event.key !== "Tab") return;
+  const panel = document.getElementById("modalPanel");
+  const focusable = panel.querySelectorAll("button,[href],input,select,textarea,[tabindex]:not([tabindex='-1'])");
+  if (!focusable.length) return;
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function bindOpeners() {
+  document.querySelectorAll("[data-open]").forEach(button => {
+    button.addEventListener("click", () => openModal(button.getAttribute("data-open")));
+  });
+  document.getElementById("modalClose").addEventListener("click", closeModal);
+  document.getElementById("modalOverlay").addEventListener("click", event => {
+    if (event.target.id === "modalOverlay") closeModal();
+  });
+}
+
+function enableReveals() {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(node => node.classList.add("visible"));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.14});
+  document.querySelectorAll(".reveal").forEach(node => {
+    const rect = node.getBoundingClientRect();
+    const startsVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    if (startsVisible) {
+      node.classList.add("visible");
+    } else {
+      observer.observe(node);
+    }
+  });
+}
+
+renderFeaturedCards();
+renderProjectIndex();
+bindOpeners();
+enableReveals();
 </script>
 </body>
 </html>
