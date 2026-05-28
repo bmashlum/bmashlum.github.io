@@ -146,6 +146,51 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   object-fit:cover;
   object-position:center top;
 }
+.hero-system-art{
+  min-height:min(34vh,300px);
+  display:grid;
+  grid-template-rows:auto 1fr;
+  padding:18px;
+}
+.hero-system-bar{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+}
+.hero-system-bar span{
+  height:10px;
+  border-radius:999px;
+  background:rgba(241,238,231,.18);
+}
+.hero-system-bar span:first-child{width:34%}
+.hero-system-bar span:last-child{width:18%;background:rgba(186,212,107,.55)}
+.hero-system-flow{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+  align-content:center;
+  min-height:210px;
+}
+.hero-node{
+  min-height:112px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(241,238,231,.04);
+  padding:14px;
+  display:grid;
+  align-content:end;
+  gap:9px;
+}
+.hero-node::before,.hero-node::after{
+  content:"";
+  display:block;
+  height:8px;
+  border-radius:3px;
+  background:rgba(241,238,231,.16);
+}
+.hero-node::after{width:62%;background:rgba(186,212,107,.44)}
 .hero-art figcaption{
   position:absolute;
   left:14px;
@@ -292,7 +337,7 @@ main{position:relative;background:var(--bg)}
   display:grid;
   gap:12px;
 }
-.case-media-main,.case-media-grid img{
+.case-media-main,.case-media-grid img,.case-visual,.case-visual-card{
   border:1px solid var(--line);
   border-radius:8px;
   background:var(--surface-2);
@@ -311,6 +356,33 @@ main{position:relative;background:var(--bg)}
   aspect-ratio:16/10;
   object-fit:cover;
   object-position:center top;
+}
+.case-visual{
+  aspect-ratio:16/8.2;
+  padding:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+  align-items:center;
+}
+.case-visual-card{
+  min-height:118px;
+  padding:16px;
+  display:grid;
+  align-content:center;
+  gap:10px;
+}
+.case-visual-card span{
+  display:block;
+  height:9px;
+  border-radius:4px;
+  background:rgba(241,238,231,.14);
+}
+.case-visual-card span:nth-child(2){width:78%}
+.case-visual-card span:nth-child(3){width:48%;background:rgba(186,212,107,.5)}
+.case-media-grid .case-visual-card{
+  aspect-ratio:16/10;
+  min-height:0;
 }
 .status-line{
   display:flex;
@@ -762,9 +834,14 @@ footer{
         <a class="cta" href="#case-study">See the work</a>
       </div>
     </div>
-    <figure class="hero-art" aria-label="Cortex product screenshot">
-      <img src="images/cortex-ui-1.png" alt="Cortex visual flow builder product screen" fetchpriority="high">
-      <figcaption>Cortex flow builder</figcaption>
+    <figure class="hero-art hero-system-art" aria-label="Neutral workflow platform visual">
+      <div class="hero-system-bar" aria-hidden="true"><span></span><span></span></div>
+      <div class="hero-system-flow" aria-hidden="true">
+        <span class="hero-node"></span>
+        <span class="hero-node"></span>
+        <span class="hero-node"></span>
+      </div>
+      <figcaption>Workflow platform</figcaption>
     </figure>
     <ul class="proof-strip" aria-label="Portfolio proof points">
       <li class="proof-item"><span class="proof-number">7+ years</span><span class="proof-label">Software engineering to lead technical product management.</span></li>
@@ -805,10 +882,14 @@ footer{
     <section class="feature-case" id="case-study" aria-labelledby="case-title">
       <div class="section case-layout reveal">
         <div class="case-media">
-          <img class="case-media-main" src="images/cortex-ui-1.png" alt="Cortex flow builder workspace">
+          <div class="case-visual" aria-hidden="true">
+            <span class="case-visual-card"><span></span><span></span><span></span></span>
+            <span class="case-visual-card"><span></span><span></span><span></span></span>
+            <span class="case-visual-card"><span></span><span></span><span></span></span>
+          </div>
           <div class="case-media-grid">
-            <img src="images/cortex-ui-2.png" alt="Cortex mission control dashboard" loading="lazy">
-            <img src="images/cortex-ui-3.png" alt="Cortex runtime configuration screen" loading="lazy">
+            <span class="case-visual-card" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="case-visual-card" aria-hidden="true"><span></span><span></span><span></span></span>
           </div>
         </div>
         <div class="case-copy">
@@ -847,7 +928,7 @@ footer{
 
     <section class="section compact reveal" aria-labelledby="featured-title">
       <p class="section-kicker">Selected proof</p>
-      <h2 id="featured-title">Projects that show the product decisions behind the screenshots.</h2>
+      <h2 id="featured-title">Projects that show the product decisions behind the work.</h2>
       <p class="section-intro">Each case study is written around problem, decision, outcome, and architecture so a hiring manager can see both product judgment and technical range quickly.</p>
       <div class="work-grid" id="featuredGrid" aria-label="Featured projects"></div>
     </section>
@@ -910,8 +991,8 @@ const projects = [
       "Guarded orchestration model designed for human-readable review and operational auditability."
     ],
     tech:["Java 21","Spring AI","Spring Boot","React","MongoDB Atlas","NL-to-SQL","Monaco","Docker"],
-    image:"images/cortex-ui-1.png",
-    screenshots:["images/cortex-ui-2.png","images/cortex-ui-3.png","images/cortex-architecture.png","images/cortex-agent.png"],
+    image:"",
+    screenshots:[],
     links:{repo:"",demo:""}
   },
   {
@@ -934,7 +1015,7 @@ const projects = [
       "Persona insights dashboard for tone, trust, and phrase-risk patterns."
     ],
     tech:["Java 21","Spring Boot","React","MUI","MongoDB","OpenAI API","React Query"],
-    image:"images/say-it-right.png",
+    image:"",
     screenshots:[],
     links:{repo:"",demo:""}
   },
